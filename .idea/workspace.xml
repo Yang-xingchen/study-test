@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77508f34-02a0-4d6c-b527-54ee4946a255" name="Default" comment="" />
+    <list default="true" id="77508f34-02a0-4d6c-b527-54ee4946a255" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/temp/Arg.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/temp/Arg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/text/student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/text/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/temp/Arg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp/Arg.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,30 +20,33 @@
     <session id="-15030190">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="33" />
+          <entry key="java" value="35" />
+          <entry key="md" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="33" />
+          <entry key="JAVA" value="35" />
+          <entry key="Markdown" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.spring.boot.mvc.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1497" />
+          <entry key="JAVA" value="1722" />
           <entry key="PLAIN_TEXT" value="60" />
         </counts>
       </usages-collector>
@@ -44,11 +54,24 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="60" />
-          <entry key="java" value="1497" />
+          <entry key="java" value="1722" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
     </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/temp/Arg.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -56,6 +79,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -93,7 +119,6 @@
         <option value="$PROJECT_DIR$/src/Jfame_text/j_06.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/j_07.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/j_08.java" />
-        <option value="$PROJECT_DIR$/src/temp/Arg.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/j_05.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/j_09.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/BlurWindow.java" />
@@ -102,6 +127,7 @@
         <option value="$PROJECT_DIR$/src/Jfame_text/CustomWindow.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/BG.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/MyLabel.java" />
+        <option value="$PROJECT_DIR$/src/temp/Arg.java" />
       </list>
     </option>
   </component>
@@ -123,12 +149,17 @@
     <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -184,32 +215,10 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="temp" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="text" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="text" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="log4j-api-2.11.0.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="text" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="log4j-core-2.11.0.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="text" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="log4j-core-2.11.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -219,7 +228,7 @@
     <property name="SearchEverywhereHistoryKey" value="BufferW&#9;PSI&#9;JAVA://java.io.BufferedWriter&#10;SwingU&#9;PSI&#9;JAVA://javax.swing.SwingUtilities&#10;JF&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JFrame.java&#10;Grap&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java&#10;AffineT&#9;PSI&#9;JAVA://java.awt.geom.AffineTransform&#10;A&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/AffineTransform.java&#10;SunGr&#9;PSI&#9;JAVA://sun.java2d.SunGraphics2D&#10;Sha&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Shape.java&#10;P&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java&#10;Proxy&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537603404259" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538895190480" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Supermarket merchandise collection system" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -240,7 +249,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.j_03">
+  <component name="RunManager" selected="Application.Arg">
     <configuration name="Arg" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="temp.Arg" />
       <module name="text" />
@@ -340,10 +349,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Arg" />
         <item itemvalue="Application.j_03" />
         <item itemvalue="Application.BlurWindow" />
         <item itemvalue="Application.BG" />
-        <item itemvalue="Application.Arg" />
         <item itemvalue="Application.PaintOrderTest" />
       </list>
     </recent_temporary>
@@ -377,7 +386,8 @@
       <workItem from="1537103801604" duration="1246000" />
       <workItem from="1537108060681" duration="1531000" />
       <workItem from="1537277767620" duration="2088000" />
-      <workItem from="1537601356392" duration="2299000" />
+      <workItem from="1537601356392" duration="3533000" />
+      <workItem from="1538894419570" duration="764000" />
     </task>
     <servers />
   </component>
@@ -414,7 +424,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43349000" />
+    <option name="totallyTimeSpent" value="45347000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -427,6 +437,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -436,7 +447,7 @@
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32942432" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32870865" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -450,7 +461,7 @@
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="3" visible="true" weight="0.28997868" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="3" visible="true" weight="0.29317698" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32995737" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Theme Preview" order="6" />
@@ -466,13 +477,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/peer/ComponentPeer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="382" column="10" selection-start-line="382" selection-start-column="10" selection-end-line="382" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Color.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -736,28 +740,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/temp/FanShe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/temp/Arg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Component.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="1023" column="21" selection-start-line="1023" selection-start-column="21" selection-end-line="1023" selection-end-column="21" />
-          <folding>
-            <element signature="e#33867#33868#0" expanded="true" />
-            <element signature="e#33914#33915#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -839,17 +825,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/text/student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+    <entry file="file://$PROJECT_DIR$/src/text/student.java" />
+    <entry file="file://$PROJECT_DIR$/src/text/test.java" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="44">
+            <caret line="2" selection-start-line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/text/test.java">
+    <entry file="file://$PROJECT_DIR$/src/temp/FanShe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1815">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="88">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/temp/Arg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>

@@ -5,10 +5,15 @@ import java.util.stream.Stream;
 
 public class Arg {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable{
         Stream.of(Arg.class.getDeclaredMethods()).forEach(System.out::println);
         Stream.of(Arg.class.getDeclaredMethods()).map(method -> Arrays.toString(method.getParameterTypes())).forEach(System.err::println);
         System.out.println(String[].class);
+        Class<?> clazz = Arg.class.getDeclaredMethod("test", String[].class).getReturnType();
+        System.err.println("void: "+clazz);
+        System.err.println("voidName: "+clazz.getName());
+        System.err.println("voidMethod: "+Arrays.toString(clazz.getDeclaredMethods()));
+        System.err.println("voidField: "+Arrays.toString(clazz.getFields()));
     }
 
     public static void test(String...arg){
