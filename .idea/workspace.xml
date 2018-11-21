@@ -1,9 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="77508f34-02a0-4d6c-b527-54ee4946a255" name="Default" comment="test void.class">
+    <list default="true" id="77508f34-02a0-4d6c-b527-54ee4946a255" name="Default" comment="test invoke method that return void">
+      <change afterPath="$PROJECT_DIR$/src/thread/ThreadLocalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/temp/Arg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/temp/Arg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/JDBC_text/DB_main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/JDBC_text/user.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BG$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BG.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BlurWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BlurWindow$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BlurWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/CustomWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/CustomWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/DNDFileTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/DNDFileTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/Label.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/MyLabel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/MyLabel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/MyLabel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/jdk8/Say.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/jdk8/SayBye.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/jdk8/SayHello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/jdk8/SaySomething.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/jdk8/Sayable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/jdk8/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/log4j/Test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/ForumService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/ForumServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/Handler1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/Handler2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/LoadTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/PerformanceHandle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/Service.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/Service1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/Service2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/proxy/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client_old.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server_old$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server_old.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/stack/Stack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/stack/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/temp/Arg.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/CK.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/CKmanExecption.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/CP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/CP1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/CP2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/CP3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/GC.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/GK.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/LianXi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/threads/donfoungExecption.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text.iml" beforeDir="false" afterPath="$PROJECT_DIR$/text.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +102,7 @@
     <session id="-15030190">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.23" value="1" />
@@ -44,7 +130,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="1863" />
-          <entry key="PLAIN_TEXT" value="76" />
+          <entry key="PLAIN_TEXT" value="119" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -52,19 +138,58 @@
         <counts>
           <entry key="dummy" value="60" />
           <entry key="java" value="1863" />
-          <entry key="txt" value="16" />
+          <entry key="txt" value="59" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
+    </session>
+    <session id="-1483514353">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="7" />
+          <entry key="java" value="26" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="7" />
+          <entry key="JAVA" value="26" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="731" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="731" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/temp/Arg.java">
+        <entry file="file://$PROJECT_DIR$/src/thread/ThreadLocalTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+            <state relative-caret-position="423">
+              <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,6 +251,7 @@
         <option value="$PROJECT_DIR$/src/Jfame_text/BG.java" />
         <option value="$PROJECT_DIR$/src/Jfame_text/MyLabel.java" />
         <option value="$PROJECT_DIR$/src/temp/Arg.java" />
+        <option value="$PROJECT_DIR$/src/thread/ThreadLocalTest.java" />
       </list>
     </option>
   </component>
@@ -156,8 +282,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,13 +299,6 @@
               <item name="text" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Jfame_text" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="text" type="b2602c69:ProjectViewProjectNode" />
-              <item name="text" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Jfame_text" type="462c0819:PsiDirectoryNode" />
-              <item name="MyLabel.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
             <path>
               <item name="text" type="b2602c69:ProjectViewProjectNode" />
@@ -213,24 +330,37 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="temp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="text" type="b2602c69:ProjectViewProjectNode" />
+              <item name="text" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="thread" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="text" type="b2602c69:ProjectViewProjectNode" />
+              <item name="text" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="threads" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="BufferW&#9;PSI&#9;JAVA://java.io.BufferedWriter&#10;SwingU&#9;PSI&#9;JAVA://javax.swing.SwingUtilities&#10;JF&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JFrame.java&#10;Grap&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java&#10;AffineT&#9;PSI&#9;JAVA://java.awt.geom.AffineTransform&#10;A&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/AffineTransform.java&#10;SunGr&#9;PSI&#9;JAVA://sun.java2d.SunGraphics2D&#10;Sha&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Shape.java&#10;P&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java&#10;Proxy&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java" />
+    <property name="SearchEverywhereHistoryKey" value="ThreadF&#9;PSI&#9;JAVA://java.util.concurrent.ThreadFactory&#10;BufferW&#9;PSI&#9;JAVA://java.io.BufferedWriter&#10;SwingU&#9;PSI&#9;JAVA://javax.swing.SwingUtilities&#10;JF&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JFrame.java&#10;Grap&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java&#10;AffineT&#9;PSI&#9;JAVA://java.awt.geom.AffineTransform&#10;A&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/AffineTransform.java&#10;SunGr&#9;PSI&#9;JAVA://sun.java2d.SunGraphics2D&#10;Sha&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Shape.java&#10;P&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java&#10;Proxy&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538896143957" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542810389963" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestEdit" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
@@ -247,7 +377,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Arg">
+  <component name="RunManager" selected="Application.ThreadLocalTest">
     <configuration name="Arg" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="temp.Arg" />
       <module name="text" />
@@ -290,13 +420,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PaintOrderTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Jfame_text.PaintOrderTest" />
+    <configuration name="ThreadLocalTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="thread.ThreadLocalTest" />
       <module name="text" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Jfame_text.*" />
+          <option name="PATTERN" value="thread.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -340,18 +470,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.BG" />
-      <item itemvalue="Application.PaintOrderTest" />
       <item itemvalue="Application.Arg" />
       <item itemvalue="Application.BlurWindow" />
       <item itemvalue="Application.j_03" />
+      <item itemvalue="Application.ThreadLocalTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ThreadLocalTest" />
         <item itemvalue="Application.Arg" />
         <item itemvalue="Application.j_03" />
         <item itemvalue="Application.BlurWindow" />
         <item itemvalue="Application.BG" />
-        <item itemvalue="Application.PaintOrderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -386,7 +516,14 @@
       <workItem from="1537277767620" duration="2088000" />
       <workItem from="1537601356392" duration="3533000" />
       <workItem from="1538894419570" duration="840000" />
-      <workItem from="1538895377858" duration="764000" />
+      <workItem from="1538895377858" duration="890000" />
+      <workItem from="1539264943614" duration="670000" />
+      <workItem from="1539525260500" duration="24000" />
+      <workItem from="1539532466179" duration="348000" />
+      <workItem from="1539571790191" duration="31000" />
+      <workItem from="1540479260853" duration="260000" />
+      <workItem from="1542806416210" duration="3125000" />
+      <workItem from="1542809888039" duration="450000" />
     </task>
     <task id="LOCAL-00001" summary="test void.class">
       <created>1538895233940</created>
@@ -395,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538895233940</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="test invoke method that return void">
+      <created>1538896205447</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1538896205447</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -431,7 +575,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46187000" />
+    <option name="totallyTimeSpent" value="51221000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -443,7 +587,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
@@ -454,7 +598,7 @@
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32976446" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32870865" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32786885" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -463,12 +607,13 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32976446" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32976446" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32896176" />
       <window_info anchor="bottom" id="Statistic" order="12" weight="0.32942432" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32896176" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="3" visible="true" weight="0.29637527" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="3" weight="0.3187166" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32995737" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Theme Preview" order="6" />
@@ -485,79 +630,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test void.class" />
-    <option name="LAST_COMMIT_MESSAGE" value="test void.class" />
+    <MESSAGE value="test invoke method that return void" />
+    <option name="LAST_COMMIT_MESSAGE" value="test invoke method that return void" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Color.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="488" column="11" selection-start-line="488" selection-start-column="11" selection-end-line="488" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="985" column="16" selection-start-line="985" selection-start-column="16" selection-end-line="985" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proxy/Handler1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="32" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proxy/PerformanceHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proxy/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proxy/Service.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proxy/Service1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proxy/Service2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="27" column="54" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="563" selection-start-line="563" selection-end-line="563" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5522">
-          <caret line="302" column="32" selection-start-line="302" selection-start-column="32" selection-end-line="302" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java" />
     <entry file="file://$PROJECT_DIR$/src/proxy/LoadTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -590,118 +667,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/Area.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8026">
-          <caret line="98" column="13" selection-start-line="98" selection-start-column="13" selection-end-line="98" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/Ellipse2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="41" column="29" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/nio/file/Files.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2536">
-          <caret line="92" column="12" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/dnd/DropTarget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="188" column="11" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Shape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="77" column="17" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Graphics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Graphics2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="1008" column="46" lean-forward="true" selection-start-line="1008" selection-start-column="46" selection-end-line="1008" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/AffineTransform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="100" column="32" lean-forward="true" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-555">
-          <caret line="307" column="21" selection-start-line="307" selection-start-column="21" selection-end-line="307" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4510">
-          <caret line="131" column="7" lean-forward="true" selection-start-line="131" selection-start-column="7" selection-end-line="131" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/image/ImageObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="115" column="28" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/plaf/ComponentUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="155" column="16" selection-start-line="155" selection-start-column="16" selection-end-line="155" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="796" column="21" lean-forward="true" selection-start-line="796" selection-start-column="21" selection-end-line="796" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/SwingUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="1419" column="23" selection-start-line="1419" selection-start-column="23" selection-end-line="1419" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="1982" column="16" selection-start-line="1982" selection-start-column="16" selection-end-line="1982" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="3926" column="16" selection-start-line="3926" selection-start-column="16" selection-end-line="3926" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/Area.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/Ellipse2D.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/nio/file/Files.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/dnd/DropTarget.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Shape.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Graphics.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Graphics2D.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/AffineTransform.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JFrame.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/image/ImageObserver.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/plaf/ComponentUI.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JComponent.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/SwingUtilities.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Container.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Window.java" />
     <entry file="file://$PROJECT_DIR$/src/Jfame_text/j_01.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
@@ -709,66 +690,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/BufferedWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="65" column="39" lean-forward="true" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/Writer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="84" column="14" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/OutputStreamWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2350">
-          <caret line="101" column="7" lean-forward="true" selection-start-line="101" selection-start-column="7" selection-end-line="101" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.datatransfer/java/awt/datatransfer/DataFlavor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="111" column="13" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/dnd/DropTargetAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/dnd/DropTargetListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="1023" column="21" selection-start-line="1023" selection-start-column="21" selection-end-line="1023" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/BufferedWriter.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/Writer.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/OutputStreamWriter.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.datatransfer/java/awt/datatransfer/DataFlavor.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/dnd/DropTargetAdapter.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/dnd/DropTargetListener.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Component.java" />
     <entry file="file://$PROJECT_DIR$/src/Jfame_text/BlurWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="23" column="131" selection-start-line="23" selection-start-column="131" selection-end-line="23" selection-end-column="131" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#435#768#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#816#1009#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -776,11 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-290">
           <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1521#1761#0" expanded="true" />
-            <element signature="e#1760#1761#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -788,9 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
           <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -798,13 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Jfame_text/BG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -857,8 +774,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/temp/Arg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+        <state relative-caret-position="450">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="70" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Jfame_text/BG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/log4j/Test1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stack/Stack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.base/java/util/concurrent/ThreadFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.base/java/util/concurrent/ExecutorService.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.base/java/util/concurrent/ThreadPoolExecutor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="501" column="19" selection-start-line="501" selection-start-column="19" selection-end-line="501" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///etc/jdk-11/lib/src.zip!/java.base/java/util/concurrent/ExecutorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="210" column="12" selection-start-line="210" selection-start-column="12" selection-end-line="210" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///etc/jdk-11/lib/src.zip!/java.base/java/util/concurrent/ThreadPoolExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="1368" column="16" selection-start-line="1368" selection-start-column="16" selection-end-line="1368" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/thread/ThreadLocalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -919,6 +909,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
