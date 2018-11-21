@@ -22,7 +22,8 @@ public class MyLabel extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			@Override
+            public void run() {
 				try {
 					MyLabel frame = new MyLabel();
 					frame.setVisible(true);

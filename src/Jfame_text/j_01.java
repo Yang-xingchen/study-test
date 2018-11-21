@@ -19,13 +19,14 @@ public class j_01 extends JFrame implements Runnable{
 
 
 	private static final long serialVersionUID = -2786624428172212752L;
-	private Point2D point2d[];
+    private Point2D[] point2d;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			@Override
+            public void run() {
 				try {
 					j_01 frame = new j_01();
 					frame.setVisible(true);

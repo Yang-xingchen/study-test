@@ -28,15 +28,18 @@ class CP1 extends CP{
 	private final String NAME = " ";
 	private String master;
 	
-	public void setMaster(String name) {
+	@Override
+    public void setMaster(String name) {
 		this.master = name;
 	}
 	
-	public void use() {
+	@Override
+    public void use() {
 		System.out.println(master+" "+NAME);
 	}
 	
-	public String getname() {
+	@Override
+    public String getname() {
 		return NAME;
 	}
 	
@@ -52,15 +55,18 @@ class CP2 extends CP{
 	private final String NAME = "";
 	private String master;
 	
-	public void setMaster(String name) {
+	@Override
+    public void setMaster(String name) {
 		this.master = name;
 	}
 	
-	public void use() {
+	@Override
+    public void use() {
 		System.out.println(master+" "+NAME);
 	}
 
-	public String getname() {
+	@Override
+    public String getname() {
 		return NAME;
 	}
 	
@@ -76,15 +82,18 @@ class CP3 extends CP{
 	private final String NAME = " ";
 	private String master;
 	
-	public void setMaster(String name) {
+	@Override
+    public void setMaster(String name) {
 		this.master = name;
 	}
 	
-	public void use() {
+	@Override
+    public void use() {
 		System.out.println(master+" "+NAME);
 	}
 	
-	public String getname() {
+	@Override
+    public String getname() {
 		return NAME;
 	}
 	

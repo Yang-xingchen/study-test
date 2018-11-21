@@ -35,7 +35,8 @@ public class Server extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			@Override
+            public void run() {
 				try {
 					Server frame = new Server();
 					frame.setVisible(true);

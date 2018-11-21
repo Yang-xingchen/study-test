@@ -62,7 +62,9 @@ public class BG extends JFrame{
 
     private Image getImage(){
         final int RADIUS = 9 ;
-        if (bg!=null) return bg;
+        if (bg!=null) {
+            return bg;
+        }
         Image image = new ImageIcon("D:\\MyPictures\\67101372_p0.jpg").getImage();
         float[] data = new float[RADIUS];
         for (int i = 0; i < data.length; i++) {

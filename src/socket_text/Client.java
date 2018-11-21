@@ -38,7 +38,8 @@ public class Client extends JFrame {
 			return;
 		}
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			@Override
+            public void run() {
 				try {
 					Client frame = new Client();
 					frame.setVisible(true);
@@ -65,7 +66,7 @@ public class Client extends JFrame {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					super.mouseClicked(e);
-					if (daiFa.getText().equals("")) {
+					if ("".equals(daiFa.getText())) {
 						daiFa.setBackground(new Color(255, 200, 200));
 						return;
 					}
@@ -82,7 +83,7 @@ public class Client extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				super.keyPressed(e);
 				if ('\n'==e.getKeyChar()) {
-					if (daiFa.getText().equals("")) {
+					if ("".equals(daiFa.getText())) {
 						daiFa.setBackground(new Color(255, 200, 200));
 						return;
 					}

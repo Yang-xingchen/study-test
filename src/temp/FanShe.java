@@ -35,7 +35,8 @@ public class FanShe extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			@Override
+            public void run() {
 				try {
 					FanShe frame = new FanShe();
 					frame.setVisible(true);
@@ -125,8 +126,8 @@ public class FanShe extends JFrame {
 			parent.setText(" ࣺ"+clazz.getSuperclass().getName());
 		}
 		me.setText(clazz.getName());
-		Method method[] = clazz.getMethods();
-		String methodName[] = new String[method.length];
+        Method[] method = clazz.getMethods();
+        String[] methodName = new String[method.length];
 		for (int i = 0; i < methodName.length; i++) {
 			methodName[i] = method[i].getName();
 		}

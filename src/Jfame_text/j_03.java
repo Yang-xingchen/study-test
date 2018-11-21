@@ -17,7 +17,7 @@ public class j_03 extends JFrame{
 
 
 	private static final long serialVersionUID = -2786624428172212752L;
-	private Point2D point2d[];
+    private Point2D[] point2d;
 	private Point2D point = new Point();
 	private boolean isInit = false;
 	final int LIM = 30;
@@ -28,7 +28,8 @@ public class j_03 extends JFrame{
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			@Override
+            public void run() {
 				try {
 					j_03 frame = new j_03();
 					frame.setVisible(true);

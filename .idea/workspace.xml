@@ -4,92 +4,10 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77508f34-02a0-4d6c-b527-54ee4946a255" name="Default" comment="test invoke method that return void">
-      <change afterPath="$PROJECT_DIR$/src/thread/ThreadLocalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="77508f34-02a0-4d6c-b527-54ee4946a255" name="Default" comment="test ThreadLocal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/JDBC_text/DB_main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/JDBC_text/user.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BG$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BG.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BlurWindow$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BlurWindow$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/BlurWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/CustomWindow$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/CustomWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/DNDFileTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/DNDFileTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/Label.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/MyLabel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/MyLabel$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/MyLabel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_01.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_02.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/j_03.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/jdk8/Say.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/jdk8/SayBye.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/jdk8/SayHello.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/jdk8/SaySomething.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/jdk8/Sayable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/jdk8/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/log4j/Test1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/ForumService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/ForumServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/Handler1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/Handler2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/LoadTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/PerformanceHandle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/Service.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/Service1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/Service2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/proxy/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Client_old.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server_old$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/socket_text/Server_old.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/stack/Stack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/stack/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/temp/Arg.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/temp/FanShe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/CK.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/CKmanExecption.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/CP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/CP1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/CP2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/CP3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/GC.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/GK.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/LianXi.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/threads/donfoungExecption.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/text.iml" beforeDir="false" afterPath="$PROJECT_DIR$/text.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Jfame_text/PaintOrderTest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/temp/Arg.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/temp/Arg.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -156,26 +74,28 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="7" />
-          <entry key="java" value="26" />
+          <entry key="class" value="8" />
+          <entry key="java" value="27" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="7" />
-          <entry key="JAVA" value="26" />
+          <entry key="CLASS" value="8" />
+          <entry key="JAVA" value="27" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="731" />
+          <entry key="java" value="760" />
+          <entry key="txt" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="731" />
+          <entry key="JAVA" value="760" />
+          <entry key="PLAIN_TEXT" value="17" />
         </counts>
       </usages-collector>
     </session>
@@ -185,8 +105,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/thread/ThreadLocalTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+            <state relative-caret-position="486">
+              <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -282,6 +202,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,7 +267,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -356,7 +276,7 @@
     <property name="SearchEverywhereHistoryKey" value="ThreadF&#9;PSI&#9;JAVA://java.util.concurrent.ThreadFactory&#10;BufferW&#9;PSI&#9;JAVA://java.io.BufferedWriter&#10;SwingU&#9;PSI&#9;JAVA://javax.swing.SwingUtilities&#10;JF&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/javax/swing/JFrame.java&#10;Grap&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/sun/java2d/SunGraphics2D.java&#10;AffineT&#9;PSI&#9;JAVA://java.awt.geom.AffineTransform&#10;A&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/geom/AffineTransform.java&#10;SunGr&#9;PSI&#9;JAVA://sun.java2d.SunGraphics2D&#10;Sha&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.desktop/java/awt/Shape.java&#10;P&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java&#10;Proxy&#9;FILE&#9;jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542810389963" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542810835983" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestEdit" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -523,7 +443,7 @@
       <workItem from="1539571790191" duration="31000" />
       <workItem from="1540479260853" duration="260000" />
       <workItem from="1542806416210" duration="3125000" />
-      <workItem from="1542809888039" duration="450000" />
+      <workItem from="1542809888039" duration="745000" />
     </task>
     <task id="LOCAL-00001" summary="test void.class">
       <created>1538895233940</created>
@@ -539,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538896205447</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="test ThreadLocal">
+      <created>1542810496295</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1542810496296</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -575,7 +502,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51221000" />
+    <option name="totallyTimeSpent" value="51516000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -606,7 +533,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32976446" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32896176" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32896176" />
       <window_info anchor="bottom" id="Statistic" order="12" weight="0.32942432" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32896176" />
@@ -631,7 +558,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test void.class" />
     <MESSAGE value="test invoke method that return void" />
-    <option name="LAST_COMMIT_MESSAGE" value="test invoke method that return void" />
+    <MESSAGE value="test ThreadLocal" />
+    <option name="LAST_COMMIT_MESSAGE" value="test ThreadLocal" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/reflect/Proxy.java" />
@@ -821,13 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.base/java/util/concurrent/ThreadPoolExecutor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="501" column="19" selection-start-line="501" selection-start-column="19" selection-end-line="501" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///etc/jdk-11/lib/src.zip!/java.base/java/util/concurrent/ExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
@@ -842,10 +763,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.base/java/util/concurrent/ThreadPoolExecutor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="389" column="11" selection-start-line="389" selection-start-column="11" selection-end-line="389" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/thread/ThreadLocalTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        <state relative-caret-position="486">
+          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
