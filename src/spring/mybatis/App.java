@@ -35,12 +35,17 @@ public class App {
     static ApplicationContext applicationContext = new AnnotationConfigApplicationContext("spring.mybatis");
 
     public static void main(String[] args) {
-        new App().userTest();
+//        new App().addUserTest();
+        new App().selectUserTest();
     }
 
-    public void userTest() {
+    void addUserTest(){
         UserMapper userMapper = applicationContext.getBean(UserMapper.class);
         Stream.of("user1", "user2", "user3").forEach(s -> userMapper.save(User.builder().name(s).build()));
+    }
+
+    void selectUserTest() {
+        UserMapper userMapper = applicationContext.getBean(UserMapper.class);
         log.info(userMapper.findById(1).toString());
         userMapper.findAll().stream().map(User::toString).forEach(log::info);
     }
