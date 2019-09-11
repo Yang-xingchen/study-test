@@ -4,14 +4,19 @@ import com.alibaba.druid.pool.DruidDataSource;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import spring.mybatis.mapper.UserMapper;
 import spring.mybatis.model.User;
 
@@ -21,13 +26,19 @@ import java.sql.SQLException;
 import java.util.stream.Stream;
 
 @Configuration
+@PropertySource("classpath:/resources/spring-mybatis.properties")
+@MapperScan("spring.mybatis.mapper")
 @Setter
 @Log
 public class App {
 
+    static ApplicationContext applicationContext = new AnnotationConfigApplicationContext("spring.mybatis");
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext("spring.mybatis");
+        new App().userTest();
+    }
+
+    public void userTest() {
         UserMapper userMapper = applicationContext.getBean(UserMapper.class);
         Stream.of("user1", "user2", "user3").forEach(s -> userMapper.save(User.builder().name(s).build()));
         log.info(userMapper.findById(1).toString());
@@ -45,7 +56,7 @@ public class App {
         dataSource.setUsername(environment.getProperty("jdbc.username"));
         dataSource.setPassword(environment.getProperty("jdbc.password"));
 
-        dataSource.setFilters("stat,log4j,wall");
+        dataSource.setFilters("stat,log4j");
 
         dataSource.setMaxActive(20);
         dataSource.setInitialSize(1);
@@ -64,6 +75,20 @@ public class App {
 
         dataSource.setAsyncInit(true);
         return dataSource;
+    }
+
+    @Bean
+    SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        return sqlSessionFactoryBean;
+    }
+
+    @Bean
+    DataSourceTransactionManager dataSourceTransactionManager(DataSource dataSource){
+        DataSourceTransactionManager manager = new DataSourceTransactionManager();
+        manager.setDataSource(dataSource);
+        return manager;
     }
 
 }
