@@ -1,4 +1,4 @@
-package spring;
+package spring.ioc;
 
 import lombok.extern.java.Log;
 import org.aspectj.lang.JoinPoint;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class Aop {
 
-    @Pointcut("execution(* spring.*+.*(..))")
+    @Pointcut("execution(* spring.ioc.*+.*(..))")
     public void logger(){}
 
     @Before("logger()")

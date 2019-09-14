@@ -1,4 +1,4 @@
-package spring;
+package spring.ioc;
 
 import lombok.extern.java.Log;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class App {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext("spring");
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext("spring.ioc");
         log.info(applicationContext.toString());
         A a = applicationContext.getBean(A.class);
         a.print();

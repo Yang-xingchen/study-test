@@ -1,4 +1,4 @@
-package spring;
+package spring.ioc;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

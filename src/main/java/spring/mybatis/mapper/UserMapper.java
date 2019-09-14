@@ -3,6 +3,7 @@ package spring.mybatis.mapper;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Repository;
+import spring.mybatis.model.Order;
 import spring.mybatis.model.User;
 
 import java.util.List;
@@ -22,25 +23,29 @@ public interface UserMapper {
             "SELECT *",
             "FROM t_user",
     })
-    @ResultMap("userMap")
+    @Results(id = "userMap", value = {
+            @Result(id = true, column = "id", property = "id"),
+            @Result(column = "name", property = "name"),
+            @Result(column = "create_time", property = "createTime"),
+            @Result(column = "id", property = "orders",
+                    many = @Many(select = "findOrdersByUser", fetchType = FetchType.EAGER))
+    })
     List<User> findAll();
+
+    @Select({
+            "SELECT *",
+            "FROM t_order",
+            "WHERE user=#{uid}"
+    })
+    @ResultMap("spring.mybatis.mapper.OrderMapper.orderMap")
+    public List<Order> findOrdersByUser(@Param("uid") int id);
 
     @Select({
             "SELECT *",
             "FROM t_user",
             "WHERE id=#{id,jdbcType=INTEGER}"
     })
-    @Results(id = "userMap", value = {
-            @Result(id = true, column = "id", property = "id"),
-            @Result(column = "name", property = "name"),
-            @Result(column = "create_time", property = "createTime"),
-            @Result(column = "id", property = "orders",
-                    many = @Many(
-                            select = "spring.mybatis.mapper.OrderMapper.findOrdersByUser",
-                            fetchType = FetchType.LAZY
-                    )
-            )
-    })
+    @ResultMap("userMap")
     public User findById(@Param("id") int id);
 
 

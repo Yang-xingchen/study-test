@@ -3,6 +3,8 @@ package spring.mybatis;
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.Setter;
 import lombok.extern.java.Log;
+import org.apache.ibatis.transaction.TransactionFactory;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,22 +13,17 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import spring.mybatis.mapper.UserMapper;
 import spring.mybatis.model.User;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.stream.Stream;
 
 @Configuration
-@PropertySource("classpath:/resources/spring-mybatis.properties")
+@PropertySource("classpath:/spring-mybatis.properties")
 @MapperScan("spring.mybatis.mapper")
 @Setter
 @Log
@@ -86,7 +83,20 @@ public class App {
     SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setFailFast(true);
+        org.apache.ibatis.mapping.Environment environment = new org.apache.ibatis.mapping.Environment("mybatis", transactionFactory(),dataSource);
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration(environment);
+        configuration.setLazyLoadingEnabled(true);
+        configuration.setUseActualParamName(false);
+        configuration.getTypeAliasRegistry().registerAliases("spring.mybatis.model");
+//        configuration.addMappers("spring.mybatis.mapper");
+        sqlSessionFactoryBean.setConfiguration(configuration);
         return sqlSessionFactoryBean;
+    }
+
+    @Bean
+    TransactionFactory transactionFactory(){
+        return new JdbcTransactionFactory();
     }
 
     @Bean

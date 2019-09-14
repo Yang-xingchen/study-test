@@ -1,4 +1,4 @@
-package spring;
+package spring.ioc;
 
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
