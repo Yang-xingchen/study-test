@@ -43,6 +43,7 @@ public class App {
 
     void selectUserTest() {
         UserMapper userMapper = applicationContext.getBean(UserMapper.class);
+        userMapper.findById(1);
         log.info(userMapper.findById(1).toString());
         userMapper.findAll().stream().map(User::toString).forEach(log::info);
     }

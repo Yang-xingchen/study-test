@@ -30,7 +30,7 @@ public interface UserMapper {
             @Result(column = "id", property = "orders",
                     many = @Many(select = "findOrdersByUser", fetchType = FetchType.EAGER))
     })
-    List<User> findAll();
+    public List<User> findAll();
 
     @Select({
             "SELECT *",
