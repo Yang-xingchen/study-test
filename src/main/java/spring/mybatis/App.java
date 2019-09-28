@@ -16,6 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import spring.mybatis.mapper.UserMapper;
+import spring.mybatis.model.Order;
 import spring.mybatis.model.User;
 
 import javax.sql.DataSource;
@@ -33,7 +34,8 @@ public class App {
 
     public static void main(String[] args) {
 //        new App().addUserTest();
-        new App().selectUserTest();
+//        new App().selectUserTest();
+        new App().selectUserOrderTest();
     }
 
     void addUserTest(){
@@ -43,9 +45,14 @@ public class App {
 
     void selectUserTest() {
         UserMapper userMapper = applicationContext.getBean(UserMapper.class);
-        userMapper.findById(1);
         log.info(userMapper.findById(1).toString());
         userMapper.findAll().stream().map(User::toString).forEach(log::info);
+    }
+
+    void selectUserOrderTest(){
+        UserMapper userMapper = applicationContext.getBean(UserMapper.class);
+        userMapper.findAll()
+                .forEach(user -> user.getOrders().stream().map(Order::toString).forEach(log::info));
     }
 
     @Autowired

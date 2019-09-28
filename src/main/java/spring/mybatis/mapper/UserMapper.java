@@ -14,7 +14,7 @@ public interface UserMapper {
 
     @Insert({
             "INSERT into t_user (name, create_time)",
-            "values (#{name, jdbcType=VARCHAR}, now())"
+            "VALUES (#{name, jdbcType=VARCHAR}, now())"
     })
     @Options(useGeneratedKeys = true)
     public int save(User user);
@@ -28,7 +28,7 @@ public interface UserMapper {
             @Result(column = "name", property = "name"),
             @Result(column = "create_time", property = "createTime"),
             @Result(column = "id", property = "orders",
-                    many = @Many(select = "findOrdersByUser", fetchType = FetchType.EAGER))
+                    many = @Many(select = "findOrdersByUser", fetchType = FetchType.LAZY))
     })
     public List<User> findAll();
 

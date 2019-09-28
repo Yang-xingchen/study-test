@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
+@ToString(exclude = {"orders"})
 @Builder
 public class User implements Serializable {
     private Integer id;

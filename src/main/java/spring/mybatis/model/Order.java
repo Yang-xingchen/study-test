@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Data
 @AllArgsConstructor
+@ToString(exclude = "commodities")
 @Builder
 public class Order implements Serializable {
     private Long id;
