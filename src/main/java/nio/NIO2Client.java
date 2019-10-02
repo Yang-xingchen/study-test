@@ -5,9 +5,9 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class NIO2Client {
@@ -22,25 +22,42 @@ public class NIO2Client {
         Scanner sc = new Scanner(System.in);
         client.connect(new InetSocketAddress(NIO2Server.SERVER_PORT), client, new CompletionHandler<>() {
             @Override
-            public void completed(Void result, AsynchronousSocketChannel socketChannel) {
+            public void completed(Void result, AsynchronousSocketChannel channel) {
                 System.err.println("connect success");
-                ByteBuffer message = ByteBuffer.allocate(1024);
-                message.put(sc.nextLine().getBytes(StandardCharsets.UTF_8));
-                message.flip();
-                socketChannel.write(message, message, new CompletionHandler<>() {
+                ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                channel.read(readBuffer, readBuffer, new CompletionHandler<>() {
+                    @Override
+                    public void completed(Integer result, ByteBuffer message) {
+                        message.flip();
+                        byte[] d = new byte[message.limit()];
+                        message.get(d);
+                        System.out.println(new String(d, UTF_8));
+                        message.clear();
+                        channel.read(message, message, this);
+                    }
+
+                    @Override
+                    public void failed(Throwable exc, ByteBuffer attachment) {
+                        fail(exc);
+                    }
+                });
+                ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+                writeBuffer.put(sc.nextLine().getBytes(UTF_8));
+                writeBuffer.flip();
+                channel.write(writeBuffer, writeBuffer, new CompletionHandler<>() {
                     @Override
                     public void completed(Integer result, ByteBuffer message) {
                         message.clear();
                         String messageStr = sc.nextLine();
-                        message.put(messageStr.getBytes(StandardCharsets.UTF_8));
+                        message.put(messageStr.getBytes(UTF_8));
                         message.flip();
                         if ("exit".equals(messageStr.toLowerCase())) {
-                            socketChannel.write(message);
+                            channel.write(message);
                             System.err.println("exit");
                             run = false;
                             return;
                         }
-                        socketChannel.write(message, message, this);
+                        channel.write(message, message, this);
                     }
 
                     @Override

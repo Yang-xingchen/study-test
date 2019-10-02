@@ -9,10 +9,7 @@ import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -20,9 +17,11 @@ public class NIO2Server {
 
     final static int SERVER_PORT = 1025;
 
+    private CopyOnWriteArrayList<AsynchronousSocketChannel> clients = new CopyOnWriteArrayList<>();
+
     public static void main(String[] args) throws Exception{
         new NIO2Server().start();
-        System.out.println("started");
+        System.err.println("started");
         try{
             Thread.sleep(60*60*24);
         }catch (InterruptedException e){
@@ -44,11 +43,15 @@ public class NIO2Server {
             @Override
             public void completed(AsynchronousSocketChannel channel, AsynchronousServerSocketChannel server) {
                 server.accept(server, this);
+                clients.add(channel);
                 System.err.println("connect success");
-                ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-                channel.read(byteBuffer, byteBuffer, new CompletionHandler<>() {
+                ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+                channel.read(readBuffer, readBuffer, new CompletionHandler<>() {
                     @Override
                     public void completed(Integer result, ByteBuffer message) {
+                        message.flip();
+                        writeBuffer.put(message);
                         message.flip();
                         byte[] d = new byte[message.limit()];
                         message.get(d);
@@ -58,7 +61,11 @@ public class NIO2Server {
                             return;
                         }
                         System.out.println(messageStr);
+                        clients.stream()
+                                .filter(channel1 -> !channel1.equals(channel))
+                                .forEach(channel1 -> channel1.write(writeBuffer.flip()));
                         message.clear();
+                        writeBuffer.clear();
                         channel.read(message, message, this);
                     }
 
