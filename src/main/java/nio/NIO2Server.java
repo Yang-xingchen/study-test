@@ -8,7 +8,6 @@ import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedList;
 import java.util.concurrent.*;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -30,7 +29,6 @@ public class NIO2Server {
     }
 
     public void start() throws Exception{
-        LinkedList<AsynchronousSocketChannel> list = new LinkedList<>();
         ExecutorService es = new ThreadPoolExecutor(8,
                 8,
                 1,
