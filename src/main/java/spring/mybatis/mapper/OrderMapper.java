@@ -25,9 +25,9 @@ public interface OrderMapper {
                     )
             ),
             @Result(column = "id", property = "commodities",
-                    many = @Many(select = "findCommodityByOrder", fetchType = FetchType.EAGER))
+                    many = @Many(select = "findCommodityByOrder", fetchType = FetchType.LAZY))
     })
-    public Order find(int id);
+    public Order find(long id);
 
     @Select({
           "SELECT *",
@@ -35,6 +35,7 @@ public interface OrderMapper {
           "WHERE",
             "id in (SELECT t_commodity FROM t_order_commodity WHERE t_order=#{oid})"
     })
+//    @ResultMap("spring.mybatis.mapper.CommodityMapper.commodityMap")
     public List<Commodity> findCommodityByOrder(@Param("oid") long oid);
 
 }

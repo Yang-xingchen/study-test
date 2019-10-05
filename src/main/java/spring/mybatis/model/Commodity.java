@@ -9,6 +9,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @ToString(exclude = {"orders"})
+@EqualsAndHashCode(exclude = {"orders"})
 @Builder
 public class Commodity implements Serializable {
     private Long id;

@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @ToString(exclude = {"orders"})
+@EqualsAndHashCode(exclude = {"orders"})
 @Builder
 public class User implements Serializable {
     private Integer id;
