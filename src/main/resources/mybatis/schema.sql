@@ -1,25 +1,30 @@
-create table if not exists t_user(
-    id int not null auto_increment,
-    name varchar(255),
-    create_time timestamp,
-    primary key (id)
+DROP TABLE IF EXISTS t_order_commodity;
+DROP TABLE IF EXISTS t_commodity;
+DROP TABLE IF EXISTS t_order;
+DROP TABLE IF EXISTS t_user;
+
+CREATE TABLE IF NOT EXISTS t_user(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    create_time TIMESTAMP,
+    PRIMARY KEY (id)
 );
-create table if not exists t_order(
-    id bigint not null auto_increment,
-    user int not null,
-    foreign key (user) references t_user(id),
-    primary key (id)
+CREATE TABLE IF NOT EXISTS t_order(
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    user INT NOT NULL,
+    FOREIGN KEY (user) REFERENCES t_user(id),
+    PRIMARY KEY (id)
 );
-create table if not exists t_commodity(
-    id bigint not null auto_increment,
-    name varchar(255) not null,
-    primary key (id)
+CREATE TABLE IF NOT EXISTS t_commodity(
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
 );
-create table if not exists t_order_commodity(
-    t_order bigint not null,
-    t_commodity bigint not null,
-    count int not null default 0,
-    foreign key (t_order) references t_order(id),
-    foreign key (t_commodity) references t_commodity(id),
-    primary key (t_order, t_commodity)
+CREATE TABLE IF NOT EXISTS t_order_commodity(
+    t_order BIGINT NOT NULL,
+    t_commodity BIGINT NOT NULL,
+    count INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (t_order) REFERENCES t_order(id),
+    FOREIGN KEY (t_commodity) REFERENCES t_commodity(id),
+    PRIMARY KEY (t_order, t_commodity)
 );
