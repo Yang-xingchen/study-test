@@ -1,4 +1,4 @@
-package com.example.page2;
+package com.example.page1;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

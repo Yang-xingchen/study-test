@@ -1,4 +1,4 @@
-package com.example.page2.model;
+package com.example.page1.model;
 
 import lombok.Builder;
 import lombok.Data;

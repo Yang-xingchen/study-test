@@ -1,10 +1,11 @@
-package com.example.page2.controller;
+package com.example.page1.controller;
 
-import com.example.page2.model.Response;
-import com.example.page2.model.User;
+import com.example.page1.model.Response;
+import com.example.page1.model.User;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class RootController {
 
-    public static final String CHECK_COOKIE_URL = "http://localhost:8080/checkCookie";
-    public static final String LOGIN_URL = "http://localhost:8080/login";
+    @Value("${user-center.check-url}")
+    public String CHECK_COOKIE_URL = "http://localhost:8080/checkCookie";
+    @Value("${user-center.login-url}")
+    public String LOGIN_URL;
 
     @Autowired
     private RestTemplate restTemplate;

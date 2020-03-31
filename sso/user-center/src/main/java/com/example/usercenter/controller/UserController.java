@@ -5,28 +5,30 @@ import com.example.usercenter.model.User;
 import com.example.usercenter.server.UserServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @Slf4j
+@ConfigurationProperties("user-center")
 public class UserController {
 
-    private ConcurrentHashMap<String, User> loginList = new ConcurrentHashMap<>();
     @Autowired
     private UserServer userServer;
 
-    public static final List<String> appList = List.of(
-            "http://localhost:8081/setCookie",
-            "http://localhost:8082/setCookie"
-    );
+    private List<String> appList = new ArrayList<>();
+
+    private ConcurrentHashMap<String, User> loginList = new ConcurrentHashMap<>();
 
     @PostMapping(value = "/login")
     public Response<String> login(@RequestBody User user) {
