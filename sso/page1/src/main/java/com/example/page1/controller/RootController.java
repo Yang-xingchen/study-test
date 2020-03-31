@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.Cookie;
@@ -53,13 +54,22 @@ public class RootController {
     }
 
     @GetMapping("/getCookie")
+    @ResponseBody
     public Response<String> getCookie(@CookieValue("uuid") String uuid) {
+        log.info("getCookie:" + uuid);
         return Response.success(uuid);
     }
 
-    @PostMapping("/setCookie")
-    public Response<String> setCookie(String cookie, HttpServletResponse response) {
-        response.addCookie(new Cookie("uuid", cookie));
+    @GetMapping("/setCookie")
+    @ResponseBody
+    public Response<String> setCookie(@CookieValue(value = "uuid", required = false) String uuid,
+                                      String cookie,
+                                      HttpServletResponse response) {
+        log.info("setCookie uuid:" + uuid);
+        if (uuid == null || !uuid.equals(cookie)) {
+            log.info("setCookie:" + cookie);
+            response.addCookie(new Cookie("uuid", cookie));
+        }
         return Response.success("");
     }
 
