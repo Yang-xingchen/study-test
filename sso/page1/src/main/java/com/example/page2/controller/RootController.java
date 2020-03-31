@@ -1,7 +1,7 @@
-package com.example.page1.controller;
+package com.example.page2.controller;
 
-import com.example.page1.model.Response;
-import com.example.page1.model.User;
+import com.example.page2.model.Response;
+import com.example.page2.model.User;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class RootController {
 
+    public static final String CHECK_COOKIE_URL = "http://localhost:8080/checkCookie";
+    public static final String LOGIN_URL = "http://localhost:8080/login";
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -28,9 +31,7 @@ public class RootController {
         if (uuid == null) {
             return "/index.html";
         }
-        Response r = restTemplate.postForObject("http://localhost:8080/checkCookie",
-                uuid,
-                Response.class);
+        Response r = restTemplate.postForObject(CHECK_COOKIE_URL, uuid, Response.class);
         if (r == null || !Response.SUCCESS.equals(r.getStatus())) {
             return "/index.html";
         }
@@ -42,9 +43,7 @@ public class RootController {
     public String login(String name, String pwd, HttpServletResponse response) {
         User user = User.builder().name(name).pwd(pwd).build();
         log.info(user.toString());
-        Response r = restTemplate.postForObject("http://localhost:8080/login",
-                user,
-                Response.class);
+        Response r = restTemplate.postForObject(LOGIN_URL, user, Response.class);
         if (r != null && Response.SUCCESS.equals(r.getStatus())) {
             log.info(r.toString());
             response.addCookie(new Cookie("uuid", r.getData().toString()));

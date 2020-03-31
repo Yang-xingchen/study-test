@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="ch">
+<head>
+    <meta charset="utf-8">
+    <title>login</title>
+        <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.log('ready')
+            $.ajax({
+                url:"/getCookie",
+                method:'GET',
+                success:function(data){
+                    cookie = data.data;
+                    console.log(cookie)
+                    $.ajax({
+                        url:"http://localhost:8080/appList",
+                        method:'GET',
+                        success:function(data) {
+                            data = data.data;
+                            data.forEach(element => {
+                                $("body").append(
+                                    '<iframe src="' + element + '?cookie='+ cookie + '" width="0px" height=0px style="display:none"></iframe>'
+                                )
+                                console.log(element)
+                            });
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1>page2</h1>
+</body>
+
+</html>

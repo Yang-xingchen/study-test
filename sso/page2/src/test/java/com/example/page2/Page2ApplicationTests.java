@@ -1,4 +1,4 @@
-package com.example.page1;
+package com.example.page2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Page1ApplicationTests {
+public class Page2ApplicationTests {
 
 	@Test
 	public void contextLoads() {
