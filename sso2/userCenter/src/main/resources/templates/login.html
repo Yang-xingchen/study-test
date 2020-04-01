@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        function getQueryString(name) {
+            let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            let r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return decodeURIComponent(r[2]);
+            };
+            return null;
+         }
+        $(document).ready(function(){
+            console.log('ready')
+            $('#submit').click(function(){
+                $.ajax({
+                    url:"/login",
+                    method:'POST',
+                    data: {
+                        name:$('#name').val(),
+                        pwd:$('#pwd').val(),
+                        back:getQueryString("back")
+                    },
+                    success:function(data){
+                        data = data.data;
+                        console.log(data);
+                        cookie = data.uuid;
+                        console.log(cookie);
+                        if (data.login) {
+                            data.appList.forEach(element => {
+                                console.log(element)
+                                $("body").append(
+                                    '<iframe src="' + element + '?cookie='+ cookie + '" width="0px" height=0px style="display:none"></iframe>'
+                                )
+                            });
+                            setTimeout(function(){
+                                window.location=data.backUrl;
+                            }, 1000)
+                        } else {
+                            console('login fail')
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    用户名:<input type="text" id="name"/>
+    密码:<input type="password" id="pwd"/>
+    <button type="submit" id="submit">提交</button>
+</body>
+</html>
