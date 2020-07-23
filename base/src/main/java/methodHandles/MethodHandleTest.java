@@ -46,6 +46,24 @@ public class MethodHandleTest {
     }
 
     @Test
+    public void testBindTo() throws Throwable {
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        MethodType methodType = MethodType.methodType(void.class, String.class, String.class);
+        MethodHandle handle = lookup.findVirtual(B.class, "print", methodType);
+        MethodHandle bind = handle.bindTo(new B()).bindTo("value1");
+        bind.invokeExact("value2");
+    }
+
+    @Test
+    public void testBindTo2() throws Throwable {
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        MethodType methodType = MethodType.methodType(void.class, String.class, String.class);
+        MethodHandle handle = lookup.findStatic(B.class, "staticPrint", methodType);
+        MethodHandle bind = handle.bindTo("value1");
+        bind.invokeExact("value2");
+    }
+
+    @Test
     public void testTestLookup() {
         MethodHandles.Lookup testLookup = MethodHandles.lookup();
         testStatic(testLookup);
