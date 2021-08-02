@@ -77,6 +77,23 @@ public class MethodHandleTest {
         testNoStatic(aLookup);
     }
 
+    @Test
+    public void testInterface() throws Throwable {
+        Impl impl = new Impl();
+        MethodHandles.Lookup lookup = impl.imterfaceLookup();
+        lookup.findVirtual(Impl.class, "test", MethodType.methodType(void.class)).invokeExact(impl);
+        lookup.findVirtual(Impl.class, "test2", MethodType.methodType(void.class)).invokeExact(impl);
+        try {
+            lookup.findVirtual(Impl.class, "test3", MethodType.methodType(void.class)).invokeExact(impl);
+        } catch (IllegalAccessException e) {
+            System.err.println("interface lookup impl private method:" + e.getMessage());
+        }
+        lookup = impl.implLookup();
+        lookup.findVirtual(Impl.class, "test", MethodType.methodType(void.class)).invokeExact(impl);
+        lookup.findVirtual(Impl.class, "test2", MethodType.methodType(void.class)).invokeExact(impl);
+        lookup.findVirtual(Impl.class, "test3", MethodType.methodType(void.class)).invokeExact(impl);
+    }
+
     public void testNoStatic(MethodHandles.Lookup lookup) {
         A a = new A();
         try {
