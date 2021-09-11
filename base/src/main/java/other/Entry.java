@@ -1,8 +1,10 @@
 package other;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 
-public class Entry {
+public class Entry implements Serializable, Cloneable {
 
     private boolean useConstructor;
 
@@ -63,4 +65,16 @@ public class Entry {
         return this;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Object clone = super.clone();
+        ((Entry) clone).useConstructor = false;
+        return clone;
+    }
+
+    private void readObject(ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        useConstructor = false;
+    }
 }
