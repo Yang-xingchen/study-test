@@ -24,6 +24,7 @@ logs
 #IDEA
 .idea
 target
+.imi
 
 #SQL info
 jdbc.properties
