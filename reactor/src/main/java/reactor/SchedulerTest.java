@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
@@ -38,6 +39,7 @@ public class SchedulerTest {
     @Test
     public void publishOn() throws InterruptedException {
         log.info("start");
+        CountDownLatch countDownLatch = new CountDownLatch(1);
         producer()
                 .publishOn(Schedulers.newSingle("handle-1"))
                 .map(i -> {
@@ -49,14 +51,15 @@ public class SchedulerTest {
                     log.info("handle-2: " + i);
                     return i;
                 })
-                .subscribe(message -> log.info("subscribe: " + message));
+                .subscribe(message -> log.info("subscribe: " + message), log::error, countDownLatch::countDown);
         log.info("end");
-        TimeUnit.SECONDS.sleep(1);
+        countDownLatch.await();
     }
 
     @Test
     public void sleep() throws InterruptedException {
         log.info("start");
+        CountDownLatch countDownLatch = new CountDownLatch(1);
         producer()
                 .publishOn(Schedulers.newSingle("handle-1"))
                 .map(i -> {
@@ -78,9 +81,9 @@ public class SchedulerTest {
                     }
                     return i;
                 })
-                .subscribe(message -> log.info("subscribe: " + message));
+                .subscribe(message -> log.info("subscribe: " + message), log::error, countDownLatch::countDown);
         log.info("end");
-        TimeUnit.SECONDS.sleep(3);
+        countDownLatch.await();
     }
 
 }

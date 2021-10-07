@@ -5,6 +5,7 @@ import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ public class Broadcast {
      */
     @Test
     public void test() throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(3);
         ConnectableFlux<Integer> connectableFlux = Flux.create(this::create).publish();
         connectableFlux.connect();
         for (int i = 0; i < 3; i++) {
@@ -25,10 +27,11 @@ public class Broadcast {
             connectableFlux
 //                    .publishOn(Schedulers.newSingle("single"))
                     .subscribe(integer ->
-                            System.out.println(Thread.currentThread().getName() + " subscribe-" + finalI + ": " + integer));
+                            System.out.println(Thread.currentThread().getName() + " subscribe-" + finalI + ": " + integer),
+                            System.err::println, countDownLatch::countDown);
             System.out.println("> subscribe " + i);
         }
-        TimeUnit.SECONDS.sleep(15);
+        countDownLatch.await();
         System.out.println("> end");
     }
 
@@ -37,6 +40,7 @@ public class Broadcast {
      */
     @Test
     public void test2() throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(3);
         Flux<Integer> flux = Flux.create(this::create).publish().autoConnect();
         for (int i = 0; i < 3; i++) {
             TimeUnit.SECONDS.sleep(3);
@@ -44,10 +48,11 @@ public class Broadcast {
             flux
 //                    .publishOn(Schedulers.newSingle("single"))
                     .subscribe(integer ->
-                            System.out.println(Thread.currentThread().getName() + " subscribe-" + finalI + ": " + integer));
+                            System.out.println(Thread.currentThread().getName() + " subscribe-" + finalI + ": " + integer),
+                            System.err::println, countDownLatch::countDown);
             System.out.println("> subscribe " + i);
         }
-        TimeUnit.SECONDS.sleep(15);
+        countDownLatch.await();
         System.out.println("> end");
     }
 
