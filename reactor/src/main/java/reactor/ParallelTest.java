@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ParallelTest {
 
-    private static final Logger log = LogManager.getLogger(SchedulerTest.class);
+    private static final Logger log = LogManager.getLogger(ParallelTest.class);
 
     @Test
     public void base() throws InterruptedException {
