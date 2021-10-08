@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
+import reactor.core.scheduler.Schedulers;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
@@ -73,4 +74,28 @@ public class Broadcast {
             System.out.println("> end producer");
         }).start();
     }
+
+    /**
+     * 多次生产，并非广播
+     */
+    @Test
+    public void multiSubscribe() {
+        Flux<Integer> range = Flux.range(0, 5).map(integer -> {
+            System.out.println("producer: " + integer);
+            return integer;
+        });
+        range.map(i -> "subscribe1: " + i).subscribe(System.out::println);
+        System.out.println("next");
+        range.map(i -> "subscribe2: " + i).subscribe(System.out::println);
+        System.out.println("next");
+        range = Flux.range(0, 5);
+        range.publishOn(Schedulers.newSingle("subscribe1"))
+                .map(i -> Thread.currentThread().getName() + ": " + i)
+                .subscribe(System.out::println);
+        System.out.println("next");
+        range.publishOn(Schedulers.newSingle("subscribe2"))
+                .map(i -> Thread.currentThread().getName() + ": " + i)
+                .subscribe(System.out::println);
+    }
+
 }
