@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
 import java.util.concurrent.CountDownLatch;
@@ -85,5 +86,48 @@ public class SchedulerTest {
         log.info("end");
         countDownLatch.await();
     }
+
+    @Test
+    public void boundedElastic() throws InterruptedException {
+        Scheduler scheduler = Schedulers.newBoundedElastic(8, 16, "boundedElastic");
+        int size = 16;
+        CountDownLatch countDownLatch = new CountDownLatch(size);
+        for (int i = 0; i < size; i++) {
+            int index = i;
+            Flux.range(0, 8)
+                    .publishOn(scheduler)
+                    .map(integer -> "[" + index + "] " + Thread.currentThread().getName() + ":" + integer)
+                    .subscribe(System.out::println, System.err::println, countDownLatch::countDown);
+        }
+        countDownLatch.await();
+    }
+
+    @Test
+    public void tooMuchTask() throws InterruptedException {
+        int queuedTaskCap = 4;
+        Scheduler scheduler = Schedulers.newBoundedElastic(2, queuedTaskCap, "boundedElastic");
+        int size = queuedTaskCap << 4;
+        CountDownLatch countDownLatch = new CountDownLatch(size);
+        for (int i = 0; i < size; i++) {
+            int index = i;
+            Flux.range(0, 8)
+                    .publishOn(scheduler)
+                    .map(integer -> {
+                        try {
+                            TimeUnit.MILLISECONDS.sleep(8);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        return "[" + index + "] " + Thread.currentThread().getName() + ":" + integer;
+                    })
+                    .subscribe(System.out::println, x -> {
+                        System.err.println("[" + index + "] " + x);
+                        countDownLatch.countDown();
+                    }, countDownLatch::countDown);
+        }
+        countDownLatch.await();
+    }
+
+
 
 }
