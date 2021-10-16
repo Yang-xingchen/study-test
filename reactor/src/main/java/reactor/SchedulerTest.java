@@ -58,6 +58,23 @@ public class SchedulerTest {
     }
 
     @Test
+    public void subscribeOn() throws InterruptedException {
+        Flux<String> flux = Flux.create(fluxSink -> {
+            for (int i = 0; i < 20; i++) {
+                fluxSink.next(Thread.currentThread().getName() + ": " + i);
+            }
+            fluxSink.complete();
+        });
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        flux
+                .subscribeOn(Schedulers.newSingle("subscribe"))
+                .subscribe(log::info, log::error, countDownLatch::countDown);
+        log.info("end");
+        countDownLatch.await();
+        log.info("exit");
+    }
+
+    @Test
     public void sleep() throws InterruptedException {
         log.info("start");
         CountDownLatch countDownLatch = new CountDownLatch(1);
