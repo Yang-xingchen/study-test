@@ -32,38 +32,49 @@ public class RoundSplit {
 
     @Test
     public void cycle() {
-        System.out.println("==1, 2==");
+        System.out.println(" 0 - - + - 5 - + - -10 - - + -15 - + - -20 - - + -25 - + - -30");
+        System.out.println("   1 2 [       ]           [       ]           [       ]");
         cycleRes(new Round(1, 2), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==1, 5==");
+        System.out.println("   1   [   5   ]           [       ]           [       ]");
         cycleRes(new Round(1, 5), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==1, 9==");
+        System.out.println("   1   [       ]   9       [       ]           [       ]");
         cycleRes(new Round(1, 9), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==1, 11==");
+        System.out.println("   1   [       ]      11   [       ]           [       ]");
         cycleRes(new Round(1, 11), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==1, 15==");
+        System.out.println("   1   [       ]           [  15   ]           [       ]");
         cycleRes(new Round(1, 15), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==1, 19==");
+        System.out.println("   1   [       ]           [       ]  19       [       ]");
         cycleRes(new Round(1, 19), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==5, 6==");
+        System.out.println("   1   [       ]           [       ]           [  25   ]");
+        cycleRes(new Round(1, 25), 3, 4, 10).forEach(System.out::println);
+        System.out.println("   1   [       ]           [       ]           [       ]  29");
+        cycleRes(new Round(1, 29), 3, 4, 10).forEach(System.out::println);
+        System.out.println("       [   5 6 ]           [       ]           [       ]");
         cycleRes(new Round(5, 6), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==5, 9==");
+        System.out.println("       [   5   ]   9       [       ]           [       ]");
         cycleRes(new Round(5, 9), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==5, 11==");
+        System.out.println("       [   5   ]      11   [       ]           [       ]");
         cycleRes(new Round(5, 11), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==5, 15==");
+        System.out.println("       [   5   ]           [  15   ]           [       ]");
         cycleRes(new Round(5, 15), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==5, 19==");
+        System.out.println("       [   5   ]           [       ]  19       [       ]");
         cycleRes(new Round(5, 19), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==9, 11==");
+        System.out.println("       [   5   ]           [       ]           [  25   ]");
+        cycleRes(new Round(5, 25), 3, 4, 10).forEach(System.out::println);
+        System.out.println("       [       ]           [       ]           [       ]  29");
+        cycleRes(new Round(5, 29), 3, 4, 10).forEach(System.out::println);
+        System.out.println("       [       ]   9  11   [       ]           [       ]");
         cycleRes(new Round(9, 11), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==9, 15==");
+        System.out.println("       [       ]   9       [  15   ]           [       ]");
         cycleRes(new Round(9, 15), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==9, 19==");
+        System.out.println("       [       ]   9       [       ]  19       [       ]");
         cycleRes(new Round(9, 19), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==15, 16==");
+        System.out.println("       [       ]           [  1516 ]           [       ]");
         cycleRes(new Round(15, 16), 3, 4, 10).forEach(System.out::println);
-        System.out.println("==15, 19==");
+        System.out.println("       [       ]           [  15   ]  19       [       ]");
         cycleRes(new Round(15, 19), 3, 4, 10).forEach(System.out::println);
+        System.out.println("       [       ]           [       ]1819       [       ]");
+        cycleRes(new Round(18, 19), 3, 4, 10).forEach(System.out::println);
     }
 
     private List<Round> cycleRes(Round src, double start, double limit, double round) {
