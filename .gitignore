@@ -26,6 +26,9 @@ logs
 target
 .imi
 
+# nodejs
+node_modules
+
 #SQL info
 jdbc.properties
 
