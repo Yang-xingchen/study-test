@@ -20,7 +20,7 @@ import java.util.stream.DoubleStream;
 @Fork(1)
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-public class Base {
+public class Sort {
 
     @Param({"100", "10000", "1000000"})
     private int size;
@@ -47,7 +47,7 @@ public class Base {
 
     public static void main(String[] args) throws Throwable {
         Options options = new OptionsBuilder()
-                .include(Base.class.getSimpleName())
+                .include(Sort.class.getSimpleName())
                 .jvmArgs("-ea")
                 .build();
         new Runner(options).run();
