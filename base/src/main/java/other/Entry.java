@@ -1,12 +1,11 @@
 package other;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 public class Entry implements Serializable, Cloneable {
 
-    private boolean useConstructor;
+
+    private static int useConstructorCount = 0;
 
     private long aLong;
 
@@ -16,17 +15,12 @@ public class Entry implements Serializable, Cloneable {
 
     private String string;
 
+    public static int getUseConstructorCount() {
+        return useConstructorCount;
+    }
+
     public Entry() {
-        useConstructor = true;
-    }
-
-    public boolean isUseConstructor() {
-        return useConstructor;
-    }
-
-    public Entry setUseConstructor(boolean useConstructor) {
-        this.useConstructor = useConstructor;
-        return this;
+        useConstructorCount++;
     }
 
     public long getaLong() {
@@ -68,13 +62,7 @@ public class Entry implements Serializable, Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException {
         Object clone = super.clone();
-        ((Entry) clone).useConstructor = false;
         return clone;
     }
 
-    private void readObject(ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        useConstructor = false;
-    }
 }

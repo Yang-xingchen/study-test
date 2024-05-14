@@ -9,8 +9,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.reflect.Field;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreateEntry {
 
@@ -20,8 +19,9 @@ public class CreateEntry {
      */
     @Test
     public void byNew() {
+        int old = Entry.getUseConstructorCount();
         Entry entry = new Entry();
-        assertTrue(entry.isUseConstructor());
+        assertEquals(old + 1, Entry.getUseConstructorCount());
     }
 
     /**
@@ -32,8 +32,9 @@ public class CreateEntry {
     @Test
     public void byClone() throws Throwable {
         Entry src = new Entry();
+        int old = Entry.getUseConstructorCount();
         Entry clone = (Entry) src.clone();
-        assertFalse(clone.isUseConstructor());
+        assertEquals(old, Entry.getUseConstructorCount());
     }
 
     /**
@@ -50,12 +51,13 @@ public class CreateEntry {
             outputStream.writeObject(src);
             bytes = os.toByteArray();
         }
+        int old = Entry.getUseConstructorCount();
         Entry serialization;
         try (ByteArrayInputStream is = new ByteArrayInputStream(bytes);
              ObjectInputStream inputStream = new ObjectInputStream(is)) {
             serialization = (Entry) inputStream.readObject();
         }
-        assertFalse(serialization.isUseConstructor());
+        assertEquals(old, Entry.getUseConstructorCount());
     }
 
     /**
@@ -64,8 +66,9 @@ public class CreateEntry {
      */
     @Test
     public void byReflect() throws Throwable {
+        int old = Entry.getUseConstructorCount();
         Entry entry = Entry.class.getConstructor().newInstance();
-        assertTrue(entry.isUseConstructor());
+        assertEquals(old + 1, Entry.getUseConstructorCount());
     }
 
     /**
@@ -76,8 +79,9 @@ public class CreateEntry {
     public void byMethodHandles() throws Throwable {
         MethodHandles.Lookup lookup = MethodHandles.lookup();
         MethodHandle constructor = lookup.findConstructor(Entry.class, MethodType.methodType(void.class));
+        int old = Entry.getUseConstructorCount();
         Entry entry = (Entry) constructor.invokeExact();
-        assertTrue(entry.isUseConstructor());
+        assertEquals(old + 1, Entry.getUseConstructorCount());
     }
 
     /**
@@ -89,8 +93,9 @@ public class CreateEntry {
         Field field = Unsafe.class.getDeclaredField("theUnsafe");
         field.setAccessible(true);
         Unsafe unsafe = (Unsafe) field.get(null);
+        int old = Entry.getUseConstructorCount();
         Entry entry = (Entry) unsafe.allocateInstance(Entry.class);
-        assertFalse(entry.isUseConstructor());
+        assertEquals(old, Entry.getUseConstructorCount());
     }
 
 }
