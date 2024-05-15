@@ -4,12 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw
+ * 参考: https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw
  */
 public class Main {
 
@@ -23,6 +24,16 @@ public class Main {
         List<String> list = List.of("a", "b", "c");
         Seq<String> seq = list::forEach;
         seq.consumer(System.out::println);
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void noEnd() {
+        List<String> list = List.of("a", "b", "c");
+        Seq<String> seq = list::forEach;
+        seq.onEach(System.out::println);
     }
 
     /**
@@ -69,8 +80,12 @@ public class Main {
      */
     @Test
     public void take() {
-        List<Integer> list = List.of(1, 2, 3, 4);
-        Seq<Integer> seq = list::forEach;
+        Seq<Integer> seq = c -> {
+            int i = 1;
+            while (true) {
+                c.accept(i++);
+            }
+        };
         seq.take(2).consumer(System.out::println);
     }
 
@@ -198,6 +213,34 @@ public class Main {
             }
         }).zip(Arrays.stream(src.split("_")).toList(), Function::apply).joining();
         System.out.println(res);
+    }
+
+    /**
+     * 0
+     * 5
+     * a: 5
+     * b: 6
+     */
+    @Test
+    public void sleep() {
+        long base = System.currentTimeMillis();
+        System.out.println(0);
+        Seq<String> seq = c -> {
+            c.accept("a");
+            sleep(100);
+            c.accept("b");
+            sleep(100);
+        };
+        sleep(500);
+        System.out.println((System.currentTimeMillis() - base) / 100);
+        seq.consumer(s -> System.out.println(s + ": " + ((System.currentTimeMillis() - base) / 100)));
+    }
+
+    private void sleep(int ms) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(ms);
+        } catch (Exception ignore) {
+        }
     }
 
 }
