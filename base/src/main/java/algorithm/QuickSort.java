@@ -1,10 +1,10 @@
-package sort;
+package algorithm;
 
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
-public class Quicksort {
+public class QuickSort {
 
     public static void main(String[] args) throws Exception {
         int[] arr = {8, 1, 6, 7, 5, 2, 9, 4, 3};
