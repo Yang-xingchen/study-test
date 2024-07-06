@@ -1,6 +1,7 @@
 package other;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import sun.misc.Unsafe;
 
@@ -14,13 +15,19 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * 破坏单例
  * <pre>
- *                  enum  checkCaller
+ *                  enum    checkCaller
  *     reflect      F       F
  *     MethodHandle T       F
  *     Unsafe       T       T
  * </pre>
  */
 public class BreakSingleton {
+
+    @BeforeAll
+    public static void setup() {
+        // 确保已加载单例
+        System.out.println(ByCallerCheck.INSTANT);
+    }
 
     /**
      * 枚举法 vs 反射
@@ -39,10 +46,11 @@ public class BreakSingleton {
      */
     @Test
     public void enumVsMethodHandle() throws Throwable {
-        MethodHandles.Lookup lookup = MethodHandles.lookup();
-        MethodHandle constructor = lookup.findConstructor(ByEnum.class, MethodType.methodType(void.class, String.class, int.class));
-        ByEnum instanct = (ByEnum) constructor.invokeExact("INSTANT", 0);
-        Assertions.assertFalse(instanct == ByEnum.INSTANT);
+        MethodHandle constructor = MethodHandles.lookup().findConstructor(ByEnum.class, MethodType.methodType(void.class, String.class, int.class));
+        ByEnum instant = (ByEnum) constructor.invokeExact("INSTANT", 0);
+        Assertions.assertNotSame(ByEnum.INSTANT, instant);
+
+        Assertions.assertEquals(1, ByEnum.values().length);
     }
 
     /**
@@ -51,13 +59,15 @@ public class BreakSingleton {
      */
     @Test
     public void enumVsUnsafe() throws Exception {
-        Field field = Unsafe.class.getDeclaredField("theUnsafe");
-        field.setAccessible(true);
-        Unsafe unsafe = (Unsafe) field.get(null);
-        ByEnum instance = (ByEnum) unsafe.allocateInstance(ByEnum.class);
-        Assertions.assertFalse(instance == ByEnum.INSTANT);
+        ByEnum instance = (ByEnum) getUnsafe().allocateInstance(ByEnum.class);
+        Assertions.assertNotSame(ByEnum.INSTANT, instance);
+
+        Assertions.assertEquals(1, ByEnum.values().length);
     }
 
+    /**
+     * 枚举法单例
+     */
     enum ByEnum {
         INSTANT
     }
@@ -76,7 +86,6 @@ public class BreakSingleton {
      */
     @Test
     public void checkVsReflect() {
-        System.out.println(ByCallerCheck.INSTANT);
         try {
             Constructor<ByCallerCheck> constructor = ByCallerCheck.class.getDeclaredConstructor();
             constructor.newInstance();
@@ -92,8 +101,7 @@ public class BreakSingleton {
      */
     @Test
     public void checkVsMethodHandle() throws Throwable {
-        MethodHandles.Lookup lookup = MethodHandles.lookup();
-        MethodHandle constructor = lookup.findConstructor(ByCallerCheck.class, MethodType.methodType(void.class));
+        MethodHandle constructor = MethodHandles.lookup().findConstructor(ByCallerCheck.class, MethodType.methodType(void.class));
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             ByCallerCheck instanct = (ByCallerCheck) constructor.invokeExact();
         });
@@ -105,20 +113,27 @@ public class BreakSingleton {
      */
     @Test
     public void checkVsUnsafe() throws Exception {
-        System.out.println(ByCallerCheck.INSTANT);
-        Field field = Unsafe.class.getDeclaredField("theUnsafe");
-        field.setAccessible(true);
-        Unsafe unsafe = (Unsafe) field.get(null);
-        ByCallerCheck instance = (ByCallerCheck) unsafe.allocateInstance(ByCallerCheck.class);
-        Assertions.assertFalse(instance == ByCallerCheck.INSTANT);
+        ByCallerCheck instance = (ByCallerCheck) getUnsafe().allocateInstance(ByCallerCheck.class);
+        Assertions.assertNotSame(ByCallerCheck.INSTANT, instance);
     }
 
+    private static Unsafe getUnsafe() throws NoSuchFieldException, IllegalAccessException {
+        Field field = Unsafe.class.getDeclaredField("theUnsafe");
+        field.setAccessible(true);
+        return (Unsafe) field.get(null);
+    }
+
+    /**
+     * 检查调用者
+     * 于构造函数中检查调用者为当前类
+     */
     static class ByCallerCheck {
+
         static ByCallerCheck INSTANT = new ByCallerCheck();
 
         private ByCallerCheck() {
             StackTraceElement[] stackTraceElements = Thread.getAllStackTraces().get(Thread.currentThread());
-            if (!stackTraceElements[3].getClassName().contains("ByCallerCheck")) {
+            if (!stackTraceElements[3].getClassName().contains(ByCallerCheck.class.getSimpleName())) {
                 throw new IllegalArgumentException();
             }
         }
