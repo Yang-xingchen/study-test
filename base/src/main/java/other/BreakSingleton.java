@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import sun.misc.Unsafe;
 
+import java.io.*;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -15,10 +16,11 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * 破坏单例
  * <pre>
- *                  enum    checkCaller
- *     reflect      F       F
- *     MethodHandle T       F
- *     Unsafe       T       T
+ *                      enum    checkCaller
+ *     reflect          F       F
+ *     MethodHandle     T       F
+ *     Serialization    F       T
+ *     Unsafe           T       T
  * </pre>
  */
 public class BreakSingleton {
@@ -51,6 +53,15 @@ public class BreakSingleton {
         Assertions.assertNotSame(ByEnum.INSTANT, instant);
 
         Assertions.assertEquals(1, ByEnum.values().length);
+    }
+
+    /**
+     * 枚举法 vs 序列化
+     * 破坏失败
+     */
+    @Test
+    public void enumVsSerialization() throws Throwable {
+        Assertions.assertEquals(ByEnum.INSTANT, serialization(ByEnum.INSTANT));
     }
 
     /**
@@ -108,6 +119,15 @@ public class BreakSingleton {
     }
 
     /**
+     * 检查调用者 vs 序列化
+     * 破坏成功
+     */
+    @Test
+    public void checkVsSerialization() throws Throwable {
+        Assertions.assertNotEquals(ByCallerCheck.INSTANT, serialization(ByCallerCheck.INSTANT));
+    }
+
+    /**
      * 检查调用者 vs Unsafe
      * 破坏成功
      */
@@ -123,11 +143,24 @@ public class BreakSingleton {
         return (Unsafe) field.get(null);
     }
 
+    private static <T> T serialization(T src) throws IOException, ClassNotFoundException {
+        byte[] bytes;
+        try (ByteArrayOutputStream os = new ByteArrayOutputStream();
+             ObjectOutputStream outputStream = new ObjectOutputStream(os)){
+            outputStream.writeObject(src);
+            bytes = os.toByteArray();
+        }
+        try (ByteArrayInputStream is = new ByteArrayInputStream(bytes);
+             ObjectInputStream inputStream = new ObjectInputStream(is)) {
+            return  (T) inputStream.readObject();
+        }
+    }
+
     /**
      * 检查调用者
      * 于构造函数中检查调用者为当前类
      */
-    static class ByCallerCheck {
+    static class ByCallerCheck implements Serializable {
 
         static ByCallerCheck INSTANT = new ByCallerCheck();
 
