@@ -9,6 +9,7 @@
 - namenode: IP1
 - secondary-namenode: IP2
 - resourcemanager: IP3
+- jobhistory: IP1
 
 1. 解压
 2. 到根目录
@@ -20,6 +21,7 @@
             <name>fs.defaultFS</name>
             <value>hdfs://IP1:8020</value>
         </property>
+        <!-- 数据路径 -->
         <property>
             <name>hadoop.tmp.dir</name>
             <value>/opt/module/hadoop/data</value>
@@ -33,10 +35,12 @@
    2. ```etc/hadoop/hdfs-site.xml```
    ```xml
     <configuration>
+        <!-- namenode -->
         <property>
             <name>dfs.namenode.http-address</name>
             <value>IP1:9870</value>
         </property>
+        <!-- secondary-namenode -->
         <property>
             <name>dfs.namenode.secondary.http-address</name>
             <value>IP2:9870</value>
@@ -54,15 +58,38 @@
             <name>yarn.resourcemanager.hostname</name>
             <value>IP3</value>
         </property>
+        <!-- 日志聚集 -->
+        <property>
+            <name>yarn.log-aggregation-enable</name>
+            <value>true</value>
+        </property>
+        <property>
+            <name>yarn.log.server.url</name>
+            <value>http://IP1:19888/jobhistory/logs</value>
+        </property>
+        <property>
+            <name>yarn.log-aggregation.retain-seconds</name>
+            <value>259200</value>
+        </property>   
     </configuration>   
    ```
    4. ```etc/hadoop/mapred-site.xml```
    ```xml
     <configuration>
+        <!-- 管理方式 -->
         <property>
             <name>mapreduce.framework.name</name>
             <value>yarn</value>
         </property>
+        <!-- 历史服务器 -->
+        <property>
+            <name>mapreduce.jobhistory.address</name>
+            <value>IP1:10020</value>
+        </property>
+        <property>
+            <name>mapreduce.jobhistory.webapp.address</name>
+            <value>IP1:19888</value>
+        </property>        
     </configuration>   
    ```
    5. ```etc/hadoop/workers```
@@ -74,8 +101,9 @@
 4. 初始化(仅在namenode执行) ```hdfs namenode -format```
 
 ### 其他
-启动HDFS ```sbin/start-dfs.sh```
+启动HDFS(IP1) ```sbin/start-dfs.sh```
 启动YARN(IP3) ```sbin/start-yarn.sh```
+历史服务器(IP1) ```bin/mapred --daemon start historyserver```
 网页地址: http://IP1:9870/
 
 # 报错说明
