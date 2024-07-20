@@ -1,5 +1,9 @@
 # 安装
 
+## 配置hosts
+```vim /etc/hosts```
+```C:\Windows\System32\drivers\etc\hosts```
+
 ## JDK
 1. 解压
 2. 配置环境 ```vim /etc/profile```
@@ -129,3 +133,11 @@ export JAVA_HOME=
 
 ## IP1:9870 页面报错Failed to retrieve data from /webhdfs/v1
 JDK版本过高。降级为JDK8即可。
+
+## FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+Windows无Hadoop环境。
+1. 下载环境包 ```https://github.com/cdarlint/winutils```
+2. 配置环境变量 `HADOOP_HOME`
+3. (不确定是否必须) 复制 `hadoop.dll` 到 `C:\Windows\System32`
+4. 重启电脑
+5. (每次)启动 `winutils.exe`
