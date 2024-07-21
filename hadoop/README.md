@@ -93,7 +93,20 @@
         <property>
             <name>mapreduce.jobhistory.webapp.address</name>
             <value>IP1:19888</value>
-        </property>        
+        </property>
+        <!-- 任务运行环境 -->
+        <property>
+            <name>yarn.app.mapreduce.am.env</name>
+            <value>HADOOP_MAPRED_HOME=/opt/module/hadoop/</value>
+        </property>
+        <property>
+            <name>mapreduce.map.env</name>
+            <value>HADOOP_MAPRED_HOME=/opt/module/hadoop/</value>
+        </property>
+        <property>
+            <name>mapreduce.reduce.env</name>
+            <value>HADOOP_MAPRED_HOME=/opt/module/hadoop/</value>
+        </property>
     </configuration>   
    ```
    5. ```etc/hadoop/workers```
@@ -108,6 +121,7 @@
 启动HDFS(IP1) ```sbin/start-dfs.sh```
 启动YARN(IP3) ```sbin/start-yarn.sh```
 历史服务器(IP1) ```bin/mapred --daemon start historyserver```
+执行jar ```hadoop jar xxx.jar xxx.YYY ...args```
 网页地址: http://IP1:9870/
 
 # 报错说明
