@@ -13,7 +13,7 @@ import java.util.Random;
  * wordCount数据生成
  * 格式: user good count
  */
-public class WordCountDataGenerate {
+public class DataGenerate {
 
     public static final int DATA_COUNT = 1000_0000;
     public static final int USER_COUNT = 100;
@@ -21,7 +21,7 @@ public class WordCountDataGenerate {
     public static final int COUNT_MAX = 10;
 
     public static void main(String[] args) throws Exception {
-        Main.run(WordCountDataGenerate::generate);
+        Main.run(DataGenerate::generate);
     }
 
     private static void generate(FileSystem fileSystem) {

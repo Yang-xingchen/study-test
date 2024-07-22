@@ -7,6 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Partitioner;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -14,21 +15,24 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.IOException;
 
 /**
- * 按用户统计数量
- * 数据生成见{@link WordCountDataGenerate}
+ * 分区统计货物
+ * 数据生成见{@link DataGenerate}
  */
-public class WordCount {
+public class Partition {
 
     public static void main(String[] args) throws Exception {
         // 任务配置
         Job job = Job.getInstance(new Configuration());
-        job.setJarByClass(WordCount.class);
+        job.setJarByClass(Partition.class);
         job.setMapperClass(WcMapper.class);
         job.setReducerClass(WcReducer.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Integer.class);
+        // 设置分区
+        job.setPartitionerClass(WcPartitioner.class);
+        job.setNumReduceTasks(5);
         // 输入输出
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
@@ -47,7 +51,7 @@ public class WordCount {
          */
         private static final IntWritable[] CACHE;
         static {
-            CACHE = new IntWritable[WordCountDataGenerate.COUNT_MAX];
+            CACHE = new IntWritable[DataGenerate.COUNT_MAX];
             for (int i = 0; i < CACHE.length; i++) {
                 CACHE[i] = new IntWritable(i);
             }
@@ -60,7 +64,7 @@ public class WordCount {
         protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, IntWritable>.Context context) throws IOException, InterruptedException {
             String line = value.toString();
             String[] s = line.split(" ");
-            context.write(new Text(s[0]), CACHE[Integer.parseInt(s[2])]);
+            context.write(new Text(s[1]), CACHE[Integer.parseInt(s[2])]);
         }
 
     }
@@ -80,6 +84,23 @@ public class WordCount {
                 sum += value.get();
             }
             context.write(key, new IntWritable(sum));
+        }
+
+    }
+
+    /**
+     * 分区
+     */
+    public static class WcPartitioner extends Partitioner<Text, IntWritable> {
+
+        /**
+         * 分区规则: 将数据分成numPartitions块连续的分区
+         * 例如: 100条数据5个区: [0, 20), [20, 40), [40,60), [60, 80), [80, 100)
+         */
+        @Override
+        public int getPartition(Text text, IntWritable intWritable, int numPartitions) {
+            int i = Integer.parseInt(text.toString().substring(4));
+            return i / (int) Math.ceil(1.0 * DataGenerate.GOOD_COUNT / numPartitions);
         }
 
     }
