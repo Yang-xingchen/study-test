@@ -10,6 +10,8 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class KafkaApplication {
@@ -28,9 +30,36 @@ public class KafkaApplication {
 	}
 
 	@Bean
+	public NewTopic randomTopic() {
+		return TopicBuilder
+				.name("random")
+				.partitions(10)
+				.replicas(1)
+				.build();
+	}
+
+	@Bean
 	public CommandLineRunner test(KafkaTemplate<String, byte[]> kafkaTemplate) {
 		return args -> {
 			kafkaTemplate.send("test", "test1".getBytes(StandardCharsets.UTF_8));
+		};
+	}
+
+	@Bean
+	public CommandLineRunner random(KafkaTemplate<String, byte[]> kafkaTemplate) {
+		return args -> {
+			Random random = new Random();
+			while (true) {
+				int i = Math.abs(random.nextInt() % 100);
+				String message = Integer.toString(i);
+				System.out.println(message);
+				kafkaTemplate.send("random", message.getBytes(StandardCharsets.UTF_8));
+				try {
+					TimeUnit.MILLISECONDS.sleep(i * 10 + 500);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		};
 	}
 
