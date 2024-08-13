@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: sharding
+  datasource:
+    url: jdbc:shardingsphere:classpath:sharding.yaml
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver

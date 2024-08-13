@@ -1,0 +1,44 @@
+dataSources:
+  db:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.31.201:3306/sharding?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+mode:
+  type: Standalone
+  repository:
+    type: JDBC
+rules:
+  - !SHARDING
+    tables:
+      t_single:
+        actualDataNodes: db.t_single01,db.t_single02,db.t_single03,db.t_single04
+        databaseStrategy:
+          none:
+        tableStrategy:
+          standard:
+            shardingColumn: uid
+            shardingAlgorithmName: singleAlgorithm
+      t_complex:
+        actualDataNodes: db.t_complex_0_0,db.t_complex_0_1,db.t_complex_1_0,db.t_complex_1_1,
+        databaseStrategy:
+          none:
+        tableStrategy:
+          complex:
+            shardingColumns: uid,gid
+            shardingAlgorithmName: complexAlgorithm
+    shardingAlgorithms:
+      singleAlgorithm:
+        type: CLASS_BASED
+        props:
+          strategy: STANDARD
+          algorithmClassName: com.example.sharding.config.SingleAlgorithm
+      complexAlgorithm:
+        type: CLASS_BASED
+        props:
+          strategy: COMPLEX
+          algorithmClassName: com.example.sharding.config.ComplexAlgorithm
+          prefix: t_complex
+props:
+  sql-show: true
