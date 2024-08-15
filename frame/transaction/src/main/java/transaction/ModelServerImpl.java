@@ -1,6 +1,7 @@
 package transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,14 +11,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class ModelServerImpl implements ModelServer{
 
     @Autowired
-    private ModelRepository modelRepository;
+    private ModelMapper modelMapper;
 
+    @Lazy
     @Autowired
     private ModelServer modelServer;
 
     @Override
+    public void clear() {
+        modelMapper.clear();
+    }
+
+    @Override
     public long count(String value) {
-        return modelRepository.countByValue(value);
+        return modelMapper.countByValue(value);
     }
 
 
@@ -33,7 +40,7 @@ public class ModelServerImpl implements ModelServer{
     @Transactional
     @Override
     public void defaultTransaction() {
-        modelRepository.save(Model.builder().value("A").build());
+        modelMapper.save(new Model(null, "A"));
         throw new RuntimeException();
     }
 
@@ -43,7 +50,7 @@ public class ModelServerImpl implements ModelServer{
      */
     @Override
     public void OITrTh() {
-        modelRepository.save(Model.builder().value("B").build());
+        modelMapper.save(new Model(null, "B"));
         TrTh("B");
     }
 
@@ -54,7 +61,7 @@ public class ModelServerImpl implements ModelServer{
     @Transactional
     @Override
     public void OTrITh() {
-        modelRepository.save(Model.builder().value("C").build());
+        modelMapper.save(new Model(null, "C"));
         Th("C");
     }
 
@@ -65,7 +72,7 @@ public class ModelServerImpl implements ModelServer{
      */
     @Override
     public void OISTrTh() {
-        modelRepository.save(Model.builder().value("D").build());
+        modelMapper.save(new Model(null, "D"));
         modelServer.TrTh("D");
     }
 
@@ -76,7 +83,7 @@ public class ModelServerImpl implements ModelServer{
     @Transactional
     @Override
     public void OTrThI() {
-        modelRepository.save(Model.builder().value("E").build());
+        modelMapper.save(new Model(null, "E"));
         innerSave();
         throw new RuntimeException();
     }
@@ -89,7 +96,7 @@ public class ModelServerImpl implements ModelServer{
     @Transactional
     @Override
     public void OTryISTrNewTh() {
-        modelRepository.save(Model.builder().value("F").build());
+        modelMapper.save(new Model(null, "F"));
         try {
             modelServer.TrNewTh("F");
         } catch (Exception ignore) {
@@ -103,7 +110,7 @@ public class ModelServerImpl implements ModelServer{
     @Transactional
     @Override
     public void OISTrNewTh() {
-        modelRepository.save(Model.builder().value("G").build());
+        modelMapper.save(new Model(null, "G"));
         modelServer.TrNewTh("G");
     }
 
@@ -114,7 +121,7 @@ public class ModelServerImpl implements ModelServer{
     @Transactional
     @Override
     public void OTryITh() {
-        modelRepository.save(Model.builder().value("H").build());
+        modelMapper.save(new Model(null, "H"));
         try {
             modelServer.TrTh("H");
         } catch (Exception ignore) {
@@ -128,26 +135,26 @@ public class ModelServerImpl implements ModelServer{
 
     @Override
     public void innerSave() {
-        modelRepository.save(Model.builder().value("E").build());
+        modelMapper.save(new Model(null, "E"));
     }
 
     @Override
     public void Th(String v) {
-        modelRepository.save(Model.builder().value(v).build());
+        modelMapper.save(new Model(null, v));
         throw new RuntimeException();
     }
 
     @Transactional
     @Override
     public void TrTh(String v) {
-        modelRepository.save(Model.builder().value(v).build());
+        modelMapper.save(new Model(null, v));
         throw new RuntimeException();
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public void TrNewTh(String v) {
-        modelRepository.save(Model.builder().value(v).build());
+        modelMapper.save(new Model(null, v));
         throw new RuntimeException();
     }
 }

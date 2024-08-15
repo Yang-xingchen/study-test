@@ -16,6 +16,8 @@ public interface ModelServer {
 
     void OTrThI();
 
+    void clear();
+
     long count(String a);
 
     void OTryITh();

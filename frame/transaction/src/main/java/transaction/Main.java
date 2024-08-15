@@ -7,14 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableJpaRepositories
-@EnableTransactionManagement(mode = AdviceMode.PROXY)
 @AllArgsConstructor
 @ComponentScan("transaction")
 @Slf4j
@@ -22,6 +17,8 @@ public class Main implements CommandLineRunner {
 
     @Autowired
     public final ModelServer modelServer;
+    @Autowired
+    private final MultiService multiService;
 
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Main.class);
@@ -31,6 +28,12 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        modelServer.clear();
+//        base();
+        multi();
+    }
+
+    private void base() {
         try {
             modelServer.defaultTransaction();
         } catch (Exception ignored) {
@@ -72,4 +75,23 @@ public class Main implements CommandLineRunner {
         log.info(modelServer.count("G") == 0 ? "OK" : modelServer.count("F") + "");
         log.info(modelServer.count("H") == 0 ? "OK" : modelServer.count("F") + "");
     }
+
+    private void multi() {
+        try {
+            multiService.normal();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            multiService.exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            multiService.multiRun();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
