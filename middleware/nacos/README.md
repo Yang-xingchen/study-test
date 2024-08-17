@@ -25,7 +25,7 @@
     # 数据库
     spring.sql.init.platform=mysql
     db.num=1
-    db.url.0=jdbc:mysql://${mysql_host}:${mysql_port}/${nacos_database}?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+    db.url.0=jdbc:mysql://${mysql_host}:${mysql_port}/${nacos_database}?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&allowPublicKeyRetrieval=true
     db.user=${mysql_user}
     db.password=${mysql_password}
     # 鉴权
@@ -50,3 +50,7 @@
 [issue](https://github.com/alibaba/nacos/issues/12498)
 
 编辑启动脚本 `vim bin/startup.sh` 增加JAVA_HOME配置，更改为JDK8路径
+
+### Public Key Retrieval is not allowed
+数据库SSL/TSL配置问题
+数据库连接参数添加`allowPublicKeyRetrieval=true`
