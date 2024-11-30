@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.time.*;
 import java.time.chrono.MinguoDate;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAdjusters;
 
 public class TemporalTest {
 
@@ -58,6 +62,10 @@ public class TemporalTest {
         System.out.println("ZoneOffset: " + ZoneOffset.of("+8"));
     }
 
+    /**
+     * 类型变更
+     * 高精度转低精度 / 多个低精度合并
+     */
     @Test
     public void convert() {
         ZoneOffset zone = ZoneOffset.of("+8");
@@ -128,6 +136,21 @@ public class TemporalTest {
         System.out.println("------------------------------------------");
     }
 
+    /**
+     * 调整
+     * 低精度值设置到高精度对应值
+     */
+    @Test
+    public void adjustInto() {
+        LocalDate date = LocalDate.of(2024, 11, 30);
+        Temporal localDateTime = date.adjustInto(LocalDateTime.of(2024, 11, 29, 12, 0));
+        Assertions.assertEquals("2024-11-30T12:00", localDateTime.toString());
+        Assertions.assertTrue(localDateTime instanceof LocalDateTime);
+    }
+
+    /**
+     * 时区转化
+     */
     @Test
     public void convertZone() {
         ZonedDateTime src = ZonedDateTime.of(2024, 11, 29, 0, 0, 0, 0, ZoneId.of("Asia/Shanghai"));
@@ -139,6 +162,79 @@ public class TemporalTest {
         // 仅更改时区信息，其他信息不变
         // 2024-11-29T00:00+09:00[Japan]
         System.out.println(src.withZoneSameLocal(ZoneId.of("Japan")));
+    }
+
+    /**
+     * 日期变更
+     */
+    @Test
+    public void with() {
+        // 2024-11-15 周五
+        LocalDate date = LocalDate.of(2024, 11, 15);
+        // 1. 封装方法: withXxx
+        Assertions.assertEquals("2024-11-10", date.withDayOfMonth(10).toString());
+        // 2. with+Field
+        Assertions.assertEquals("2024-11-10", date.with(ChronoField.DAY_OF_MONTH, 10).toString());
+        // 3. adjuster+静态方法
+        //// 月初
+        Assertions.assertEquals("2024-11-01", date.with(TemporalAdjusters.firstDayOfMonth()).toString());
+        //// 月末
+        Assertions.assertEquals("2024-11-30", date.with(TemporalAdjusters.lastDayOfMonth()).toString());
+        //// 下月初
+        Assertions.assertEquals("2024-12-01", date.with(TemporalAdjusters.firstDayOfNextMonth()).toString());
+        //// 年初
+        Assertions.assertEquals("2024-01-01", date.with(TemporalAdjusters.firstDayOfYear()).toString());
+        //// 年底
+        Assertions.assertEquals("2024-12-31", date.with(TemporalAdjusters.lastDayOfYear()).toString());
+        //// 下年初
+        Assertions.assertEquals("2025-01-01", date.with(TemporalAdjusters.firstDayOfNextYear()).toString());
+        //// 本月第一个周一
+        Assertions.assertEquals("2024-11-04", date.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)).toString());
+        //// 本月最后一个周一
+        Assertions.assertEquals("2024-11-25", date.with(TemporalAdjusters.lastInMonth(DayOfWeek.MONDAY)).toString());
+        //// 本月第二个周一
+        Assertions.assertEquals("2024-11-11", date.with(TemporalAdjusters.dayOfWeekInMonth(2, DayOfWeek.MONDAY)).toString());
+        //// 本月最后二个周一
+        Assertions.assertEquals("2024-11-18", date.with(TemporalAdjusters.dayOfWeekInMonth(-2, DayOfWeek.MONDAY)).toString());
+        //// 下一个周一
+        Assertions.assertEquals("2024-11-18", date.with(TemporalAdjusters.next(DayOfWeek.MONDAY)).toString());
+        //// 上一个周一
+        Assertions.assertEquals("2024-11-11", date.with(TemporalAdjusters.previous(DayOfWeek.MONDAY)).toString());
+        // 4. adjuster+实例
+        //// 指定月份
+        Assertions.assertEquals("2024-07-15", date.with(Month.JULY).toString());
+        //// 指定星期
+        Assertions.assertEquals("2024-11-11", date.with(DayOfWeek.MONDAY).toString());
+        //// ... 更多可用实例:
+        //// LocalDateTime、LocalDate、LocalTime
+        //// OffsetDateTime、OffsetDate、OffsetTime
+        //// Instant
+        //// DayOfWeek、DayOfMonth、DayOfYear、MonthDay、Month、YearMonth、Year
+    }
+
+    /**
+     * 计算
+     * 包含{@link Temporal#plus}/{@link Temporal#minus}
+     */
+    @Test
+    public void compute() {
+        // 2024-11-15 周五
+        LocalDateTime dateTime = LocalDateTime.of(2024, 11, 15, 12, 0);
+        // 1. 封装方法: plusXxx/minusXxx
+        Assertions.assertEquals("2024-11-16T12:00", dateTime.plusDays(1).toString());
+        // 2. plus/minus+值+单位
+        Assertions.assertEquals("2024-11-16T12:00", dateTime.plus(1, ChronoUnit.DAYS).toString());
+        // 3. plus/minus+TemporalAmount
+        //// Duration: 秒+纳秒
+        Assertions.assertEquals("2024-11-16T12:00", dateTime.plus(Duration.ofDays(1)).toString());
+        //// Period: 年月日
+        Assertions.assertEquals("2024-11-16T12:00", dateTime.plus(Period.of(0, 0, 1)).toString());
+    }
+
+    @Test
+    public void range() {
+        Assertions.assertEquals(29, LocalDate.of(2024, 2, 1).range(ChronoField.DAY_OF_MONTH).getSmallestMaximum());
+        Assertions.assertEquals(28, LocalDate.of(2023, 2, 1).range(ChronoField.DAY_OF_MONTH).getSmallestMaximum());
     }
 
 }
