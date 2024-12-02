@@ -4,7 +4,7 @@ import java.lang.invoke.MethodHandles;
 
 public interface Interface {
 
-    default MethodHandles.Lookup imterfaceLookup() {
+    default MethodHandles.Lookup interfaceLookup() {
         return MethodHandles.lookup();
     }
 
