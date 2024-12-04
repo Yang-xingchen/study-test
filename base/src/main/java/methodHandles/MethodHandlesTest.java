@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.invoke.MethodHandles.*;
 
@@ -184,5 +187,126 @@ public class MethodHandlesTest {
     public static String ret(String s, String s1, String s2) {
         return "ret3[" + s + "/" + s1 + "/" + s2 + "]";
     }
+
+    @Test
+    public void ifElseTest() throws Throwable {
+        MethodHandle oddLength = lookup().findStatic(MethodHandlesTest.class, "oddLength", MethodType.methodType(boolean.class, String.class));
+        MethodHandle concat = lookup().findVirtual(String.class, "concat", MethodType.methodType(String.class, String.class));
+        MethodHandle oddString = insertArguments(concat, 0, "odd:");
+        MethodHandle evenString = insertArguments(concat, 0, "even:");
+
+        // guardWithTest: 条件分支, 返回MethodHandle参数为if分支和else分支的参数, 前面部分为条件参数
+        // 参数: arg
+        // if (oddLength(arg)) {
+        //     return oddString(arg);
+        // } else {
+        //     return evenString(arg);
+        // }
+        MethodHandle oddEvenString = guardWithTest(oddLength, oddString, evenString);
+        Assertions.assertEquals("odd:a", (String) oddEvenString.invokeExact("a"));
+        Assertions.assertEquals("even:ab", (String) oddEvenString.invokeExact("ab"));
+    }
+
+    public static boolean oddLength(String s) {
+        return (s.length() & 1) == 1;
+    }
+
+    @Test
+    public void switchTest() throws Throwable {
+        MethodHandle def = dropArguments(MethodHandles.constant(String.class, "def"), 0, int.class);
+        MethodHandle zero = dropArguments(MethodHandles.constant(String.class, "zero"), 0, int.class);
+        MethodHandle one = dropArguments(MethodHandles.constant(String.class, "one"), 0, int.class);
+        MethodHandle two = dropArguments(MethodHandles.constant(String.class, "two"), 0, int.class);
+        // switch(arg) {
+        //     case 0: return zero(arg);
+        //     case 1: return one(arg);
+        //     case 2: return two(arg);
+        //     default: return def(arg);
+        // }
+        MethodHandle tableSwitch = tableSwitch(def, zero, one, two);
+        Assertions.assertEquals("def", (String) tableSwitch.invokeExact(-1));
+        Assertions.assertEquals("zero", (String) tableSwitch.invokeExact(0));
+        Assertions.assertEquals("one", (String) tableSwitch.invokeExact(1));
+        Assertions.assertEquals("two", (String) tableSwitch.invokeExact(2));
+        Assertions.assertEquals("def", (String) tableSwitch.invokeExact(3));
+
+        MethodHandle intStringConcat = lookup().findStatic(MethodHandlesTest.class, "intStringConcat", MethodType.methodType(String.class, int.class, String.class));
+        MethodHandle intStringConcat2 = lookup().findStatic(MethodHandlesTest.class, "intStringConcat2", MethodType.methodType(String.class, int.class, String.class));
+        // switch(arg[0]) {
+        //     case 0: return zero(arg[0], arg[1]);
+        //     case 1: return one(arg[0], arg[1]);
+        //     case 2: return two(arg[0], arg[1]);
+        //     default: return def(arg[0], arg[1]);
+        // }
+        MethodHandle tableSwitch2 = tableSwitch(intStringConcat2, intStringConcat, intStringConcat);
+        Assertions.assertEquals("concat1: zero/0", (String) tableSwitch2.invokeExact(0, "zero"));
+        Assertions.assertEquals("concat1: one/1", (String) tableSwitch2.invokeExact(1, "one"));
+        Assertions.assertEquals("concat2: two/2", (String) tableSwitch2.invokeExact(2, "two"));
+    }
+
+    public static String intStringConcat(int i, String s) {
+        return "concat1: " + s + "/" + i;
+    }
+
+    public static String intStringConcat2(int i, String s) {
+        return "concat2: " + s + "/" + i;
+    }
+
+    @Test
+    public void loop() throws Throwable {
+        MethodHandle sum = publicLookup().findStatic(Integer.class, "sum", MethodType.methodType(int.class, int.class, int.class));
+        MethodHandle less = publicLookup().findStatic(MethodHandlesTest.class, "less", MethodType.methodType(boolean.class, int.class, int.class));
+        MethodHandle constant0 = MethodHandles.constant(int.class, 0);
+
+        // iteratedLoop: foreach
+        List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        // list.iterator()
+        MethodHandle iterator = insertArguments(publicLookup().findVirtual(List.class, "iterator", MethodType.methodType(Iterator.class)), 0, list);
+        // int ret = constant(0);
+        // for (int i : list) {
+        //     ret = Integer.sum(ret, i);
+        // }
+        // return ret;
+        MethodHandle iteratedLoop = iteratedLoop(iterator, constant0, sum);
+        Assertions.assertEquals(45, (int) iteratedLoop.invokeExact());
+
+        // countedLoop: fori
+        // int ret = constant(0);
+        // for (int i = 0; i < constant(10); i++) {
+        //     ret = Integer.sum(ret, i);
+        // }
+        // return ret;
+        MethodHandle countedLoop = countedLoop(MethodHandles.constant(int.class, 10), constant0, sum);
+        Assertions.assertEquals(45, (int) countedLoop.invokeExact());
+
+        // whileLoop: while
+        // atomGet: AtomicInteger.get()
+        MethodHandle atomGet = publicLookup().findVirtual(AtomicInteger.class, "get", MethodType.methodType(int.class));
+        // atomGetAndIncrement: AtomicInteger.getAndIncrement()
+        MethodHandle atomGetAndIncrement = publicLookup().findVirtual(AtomicInteger.class, "getAndIncrement", MethodType.methodType(int.class));
+        // whileInit: (AtomicInteger a) -> 0
+        MethodHandle whileInit = dropArguments(constant0, 0, AtomicInteger.class);
+        // less10: (int i, AtomicInteger a) -> a.get() < 10
+        MethodHandle less10 = dropArguments(insertArguments(filterArguments(less, 0, atomGet), 1, 10), 0, int.class);
+        // whileBody: (int i, AtomicInteger a) -> sum(i, a.getAndIncrement())
+        MethodHandle whileBody = filterArguments(sum, 1, atomGetAndIncrement);
+        // int ret = whileInit(arg[0]);
+        // while (less10(ret, arg[0])) {
+        //     whileBody(ret, arg[0]);
+        // }
+        // return ret;
+        MethodHandle whileLoop = whileLoop(whileInit, less10, whileBody);
+        Assertions.assertEquals(45, (int) whileLoop.invokeExact(new AtomicInteger()));
+
+        // doWhileLoop: do-while, 与whileLoop类似，省略相关测试
+
+        // todo loop
+    }
+
+    public static boolean less(int a, int b) {
+        return a < b;
+    }
+
+
 
 }
