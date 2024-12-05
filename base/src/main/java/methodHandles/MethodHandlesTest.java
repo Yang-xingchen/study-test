@@ -300,13 +300,75 @@ public class MethodHandlesTest {
 
         // doWhileLoop: do-while, 与whileLoop类似，省略相关测试
 
-        // todo loop
+        // loop: 通用循环, 可在一条循环内执行多条语句
+        // 每个参数由一个长度为4的数组组成, 分别表示: 初始化、循环体、结束条件、结果处理
+        // getResult: (int i, AtomInteger a) -> i
+        MethodHandle getResult = dropArguments(identity(int.class), 1, AtomicInteger.class);
+        // int ret = whileInit(arg[0]);
+        // while (less10(ret, arg[0])) {
+        //     whileBody(ret, arg[0]);
+        // }
+        // return getResult(ret, arg[0]);
+        MethodHandle loop1 = MethodHandles.loop(new MethodHandle[]{whileInit, whileBody, less10, getResult});
+        Assertions.assertEquals(45, (int) loop1.invokeExact(new AtomicInteger()));
     }
 
     public static boolean less(int a, int b) {
         return a < b;
     }
 
+    @Test
+    public void exception() throws Throwable {
+        MethodHandle println = publicLookup().findVirtual(System.out.getClass(), "println", MethodType.methodType(void.class, String.class));
+        MethodHandle print = insertArguments(insertArguments(println, 1, "print"), 0, System.out);
+        // throwException: 抛出异常, 类似throw
+        // throwException: e -> {throw e;}
+        MethodHandle throwException = throwException(void.class, RuntimeException.class);
+        System.out.println("====================");
+        try {
+            // throw new RuntimeException();
+            throwException.invoke(new RuntimeException());
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+        System.out.println("====================");
+        try {
+            throwException.invoke(new NullPointerException());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
+        // catchException: try-catch
+        System.out.println("====================");
+        MethodHandle printStackTrace = publicLookup().findVirtual(RuntimeException.class, "printStackTrace", MethodType.methodType(void.class));
+        MethodHandle catchException = catchException(throwException, RuntimeException.class, printStackTrace);
+        // try {
+        //     throwException(arg[0]);
+        // } catch (RuntimeException e) {
+        //     printStackTrace(e)
+        // }
+        catchException.invokeExact(new RuntimeException());
+
+        // tryFinally: try-final
+        System.out.println("====================");
+        MethodHandle cleanup = dropArguments(print, 0, Throwable.class);
+        MethodHandle tryFinally = tryFinally(throwException, cleanup);
+        try {
+            // Throwable throwable = null;
+            // try {
+            //     throwException(arg[0]);
+            // } catch (Throwable e) {
+            //     throwable = e;
+            // } finally {
+            //     cleanup(throwable);
+            // }
+            tryFinally.invokeExact(new RuntimeException());
+        } catch (RuntimeException e) {
+            System.out.println("====================");
+            e.printStackTrace();
+        }
+
+        System.out.println("exit");
+    }
 
 }
