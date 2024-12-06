@@ -1,4 +1,4 @@
-package methodHandles;
+package invoke;
 
 import java.lang.invoke.MethodHandles;
 

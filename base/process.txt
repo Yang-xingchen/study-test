@@ -3,8 +3,8 @@ proxy.ForumServiceImpl
 proxy.Service2
 proxy.LoadTest
 stack.Stack
-methodHandles.Impl
-methodHandles.MethodHandleTest
+invoke.Impl
+invoke.MethodHandleTest
 Jfame_text.PaintOrderTest
 other.CreateEntry
 juc.FAJ
@@ -35,7 +35,7 @@ threads.CP2
 threads.CP3
 jdk8.Test
 proxy.Handler2
-methodHandles.B
+invoke.B
 threads.CK
 threads.CKmanExecption
 threads.donfoungExecption
@@ -47,7 +47,7 @@ nio.NIOTest
 codeAndDecode.EncodeAndDecode
 Jfame_text.MyLabel
 Jfame_text.Label
-methodHandles.A
+invoke.A
 jdk8.SayHello
 other.AdaptiveScreen
 jdk8.Say
@@ -62,7 +62,7 @@ proxy.Service1
 temp.Reference
 threads.GC
 Jfame_text.BlurWindow
-methodHandles.Interface
+invoke.Interface
 socket_text.Server
 juc.Accumulator
 other.RoundSplit

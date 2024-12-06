@@ -1,4 +1,4 @@
-package methodHandles;
+package invoke;
 
 public class B {
 
