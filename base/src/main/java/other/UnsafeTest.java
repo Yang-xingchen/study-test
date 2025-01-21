@@ -62,9 +62,9 @@ public class UnsafeTest {
     @Test
     public void obj() throws Throwable {
         Unsafe unsafe = getUnsafe();
+        int old = Entry.getUseConstructorCount();
         Object o = unsafe.allocateInstance(Entry.class);
         Assertions.assertTrue(o instanceof Entry);
-        int old = Entry.getUseConstructorCount();
         Entry entry = (Entry) o;
         assertEquals(old, Entry.getUseConstructorCount());
         assertEquals(0L, entry.getaLong());

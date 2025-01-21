@@ -1,4 +1,4 @@
-package jdk8;
+package feature.jdk8;
 
 import java.util.function.Supplier;
 

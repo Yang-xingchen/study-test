@@ -2,7 +2,7 @@ jdk8.SaySomething
 proxy.ForumServiceImpl
 proxy.Service2
 proxy.LoadTest
-stack.Stack
+other.StackTrace
 invoke.Impl
 invoke.MethodHandleTest
 Jfame_text.PaintOrderTest
@@ -19,11 +19,11 @@ processor.MyProcessor
 processor.Main
 other.UnsafeTest
 Jfame_text.DNDFileTest
-thread.ThreadLocalTest
+other.ThreadLocalTest
 jdk8.SayBye
 socket_text.Client
 stack.Test
-nio.NIO2Test
+nio.AsyncChannelTest
 nio.NIO2Server
 proxy.ForumService
 processor.ProcessorClass
@@ -43,8 +43,8 @@ nio.NIO2Client
 other.Over
 Jfame_text.CustomWindow
 Jfame_text.j_02
-nio.NIOTest
-codeAndDecode.EncodeAndDecode
+nio.BufferTest
+codeAndDecode.CipherTest
 Jfame_text.MyLabel
 Jfame_text.Label
 invoke.A

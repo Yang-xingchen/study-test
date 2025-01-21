@@ -1,4 +1,4 @@
-package jdk21;
+package feature.jdk21;
 
 public class SwitchPattern {
 

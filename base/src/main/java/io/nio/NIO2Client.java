@@ -1,4 +1,4 @@
-package nio;
+package io.nio;
 
 
 import java.net.InetSocketAddress;
@@ -10,21 +10,28 @@ import java.util.Scanner;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/**
+ * NIO2 网络客户端
+ * 服务端: {@link NIO2Server}
+ */
 public class NIO2Client {
 
     private volatile boolean run = true;
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         new NIO2Client().start();
     }
-    public void start() throws Exception{
+
+    public void start() throws Exception {
         AsynchronousSocketChannel client = AsynchronousSocketChannel.open();
         Scanner sc = new Scanner(System.in);
+        // 链接服务器
         client.connect(new InetSocketAddress(NIO2Server.SERVER_PORT), client, new CompletionHandler<>() {
             @Override
             public void completed(Void result, AsynchronousSocketChannel channel) {
                 System.err.println("connect success");
                 ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                // 读取消息
                 channel.read(readBuffer, readBuffer, new CompletionHandler<>() {
                     @Override
                     public void completed(Integer result, ByteBuffer message) {
@@ -33,6 +40,7 @@ public class NIO2Client {
                         message.get(d);
                         System.out.println(new String(d, UTF_8));
                         message.clear();
+                        // 读取下一条消息
                         channel.read(message, message, this);
                     }
 
@@ -41,6 +49,7 @@ public class NIO2Client {
                         fail(exc);
                     }
                 });
+                // 写入消息
                 ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
                 writeBuffer.put(sc.nextLine().getBytes(UTF_8));
                 writeBuffer.flip();
@@ -51,12 +60,14 @@ public class NIO2Client {
                         String messageStr = sc.nextLine();
                         message.put(messageStr.getBytes(UTF_8));
                         message.flip();
+                        // 处理退出
                         if ("exit".equals(messageStr.toLowerCase())) {
                             channel.write(message);
                             System.err.println("exit");
                             run = false;
                             return;
                         }
+                        // 写入下一条
                         channel.write(message, message, this);
                     }
 
@@ -66,16 +77,17 @@ public class NIO2Client {
                     }
                 });
             }
+
             @Override
             public void failed(Throwable exc, AsynchronousSocketChannel attachment) {
                 fail(exc);
             }
         });
         while (run) {
-            try{
+            try {
                 Thread.sleep(1000);
-            }catch (InterruptedException e){
-            	e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }

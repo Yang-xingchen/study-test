@@ -1,4 +1,4 @@
-package jdk17;
+package feature.jdk17;
 
 /**
  * 加sealed必须有子类

@@ -1,10 +1,27 @@
-package stack;
+package other;
 
 import java.util.Date;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class Stack {
+public class StackTrace {
+
+    public static void main(String[] args) {
+        StackTrace stack = new StackTrace();
+        invoke(stack);
+
+        System.out.println("log---------------------------------------------------------------------------------------------");
+        logTest();
+    }
+
+    private static void invoke(StackTrace s){
+        s.show();
+    }
+
+    private static void logTest(){
+        System.out.println(StackTrace.log("logTest"));
+    }
+
     public void show(){
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
         System.out.println(stackTraceElements.length);

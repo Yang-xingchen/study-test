@@ -63,6 +63,7 @@ public class CreateEntry {
     /**
      * 反射
      * 使用构造函数: true
+     * 高版本下反射API内部采用方法句柄{@link #byMethodHandles()}
      */
     @Test
     public void byReflect() throws Throwable {

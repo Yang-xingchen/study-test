@@ -1,27 +1,31 @@
-package nio;
+package io.nio;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.nio.BufferOverflowException;
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
-import java.nio.file.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NIOTest {
+public class BufferTest {
 
-    @Test
-    void writeAndRead() throws IOException{
-        Path path = Paths.get("nioTest.txt");
-        Files.write(path, "test".getBytes());
-        assertEquals("test",Files.readString(path));
-    }
-
-    @Test
-    void buffer(){
+    /**
+     * <pre>
+     *     {@link ByteBuffer#allocate(int)}分配容量
+     *
+     *     {@link ByteBuffer#capacity()}获取容量，分配后不会改变
+     *     {@link ByteBuffer#position()}buffer当前处理位置
+     *     {@link ByteBuffer#limit()}buffer可处理上限
+     *     {@link ByteBuffer#remaining()}剩余空间: {@link ByteBuffer#limit()} - {@link ByteBuffer#position()}
+     *
+     *     {@link ByteBuffer#put}写入内容到buffer, 并增加{@link ByteBuffer#position()}
+     *     {@link ByteBuffer#get}从buffer读取内容, 并增加{@link ByteBuffer#position()}
+     *     {@link ByteBuffer#flip()}将{@link ByteBuffer#limit()}设置为{@link ByteBuffer#position()}，并将{@link ByteBuffer#position()}归0
+     *     {@link ByteBuffer#clear()}重置为刚分配状态
+     * </pre>
+     */
+    public static void main(String[] args) {
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         assertEquals(1024, byteBuffer.limit());
         assertEquals(0, byteBuffer.position());
@@ -160,23 +164,6 @@ public class NIOTest {
         assertEquals(0, byteBuffer.position());
         assertEquals(1024, byteBuffer.capacity());
         assertEquals(0, byteBuffer.remaining());
-    }
-
-    public static void main(String[] args) throws Exception{
-        Path path = Paths.get("/root");
-        WatchService watchService = FileSystems.getDefault().newWatchService();
-        path.register(watchService,
-                StandardWatchEventKinds.ENTRY_CREATE,
-                StandardWatchEventKinds.ENTRY_DELETE,
-                StandardWatchEventKinds.ENTRY_MODIFY);
-        while (true){
-            WatchKey key = watchService.take();
-            key.pollEvents().forEach(watchEvent -> {
-                System.out.printf("[%s]->%s\n",watchEvent.kind(), watchEvent.context());
-                key.reset();
-            });
-        }
-
     }
 
 }

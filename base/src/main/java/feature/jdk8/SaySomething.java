@@ -1,4 +1,4 @@
-package jdk8;
+package feature.jdk8;
 
 public interface SaySomething {
 	void say(String str);
