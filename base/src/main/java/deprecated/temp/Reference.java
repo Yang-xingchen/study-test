@@ -1,4 +1,4 @@
-package temp;
+package deprecated.temp;
 
 public class Reference {
 

@@ -1,4 +1,4 @@
-package threads;
+package deprecated.threads;
 /*
  */
 public class CP {

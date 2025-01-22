@@ -1,4 +1,4 @@
-package threads;
+package deprecated.threads;
 
 import java.util.Random;
 /*

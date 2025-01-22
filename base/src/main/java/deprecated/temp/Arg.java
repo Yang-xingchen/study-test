@@ -1,4 +1,4 @@
-package temp;
+package deprecated.temp;
 
 import java.util.Arrays;
 import java.util.stream.Stream;

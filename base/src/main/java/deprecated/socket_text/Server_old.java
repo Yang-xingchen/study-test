@@ -1,4 +1,4 @@
-package socket_text;
+package deprecated.socket_text;
 
 import java.io.IOException;
 import java.net.InetAddress;

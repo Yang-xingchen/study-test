@@ -1,4 +1,4 @@
-package socket_text;
+package deprecated.socket_text;
 
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;

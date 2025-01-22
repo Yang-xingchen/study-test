@@ -1,4 +1,4 @@
-package io.nio;
+package io.aio;
 
 
 import java.net.InetSocketAddress;
@@ -14,16 +14,16 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * NIO2网络服务端
- * 客户端: {@link NIO2Client}
+ * 客户端: {@link AIOClient}
  */
-public class NIO2Server {
+public class AIOServer {
 
     final static int SERVER_PORT = 1025;
 
     private CopyOnWriteArrayList<AsynchronousSocketChannel> clients = new CopyOnWriteArrayList<>();
 
     public static void main(String[] args) throws Exception {
-        new NIO2Server().start();
+        new AIOServer().start();
         System.out.println("started");
         try {
             Thread.sleep(60 * 60 * 24);

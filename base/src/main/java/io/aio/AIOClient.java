@@ -1,4 +1,4 @@
-package io.nio;
+package io.aio;
 
 
 import java.net.InetSocketAddress;
@@ -12,21 +12,21 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * NIO2 网络客户端
- * 服务端: {@link NIO2Server}
+ * 服务端: {@link AIOServer}
  */
-public class NIO2Client {
+public class AIOClient {
 
     private volatile boolean run = true;
 
     public static void main(String[] args) throws Exception {
-        new NIO2Client().start();
+        new AIOClient().start();
     }
 
     public void start() throws Exception {
         AsynchronousSocketChannel client = AsynchronousSocketChannel.open();
         Scanner sc = new Scanner(System.in);
         // 链接服务器
-        client.connect(new InetSocketAddress(NIO2Server.SERVER_PORT), client, new CompletionHandler<>() {
+        client.connect(new InetSocketAddress(AIOServer.SERVER_PORT), client, new CompletionHandler<>() {
             @Override
             public void completed(Void result, AsynchronousSocketChannel channel) {
                 System.err.println("connect success");
