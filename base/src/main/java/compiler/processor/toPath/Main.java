@@ -1,4 +1,4 @@
-package processor;
+package compiler.processor.toPath;
 
 @ProcessorClass
 public class Main {

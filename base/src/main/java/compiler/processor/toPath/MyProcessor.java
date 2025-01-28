@@ -1,4 +1,4 @@
-package processor;
+package compiler.processor.toPath;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;
@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@SupportedAnnotationTypes("processor.ProcessorClass")
+@SupportedAnnotationTypes("compiler.processor.ProcessorClass")
 @SupportedSourceVersion(SourceVersion.RELEASE_16)
 public class MyProcessor extends AbstractProcessor {
 
