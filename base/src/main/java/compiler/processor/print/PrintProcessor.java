@@ -6,6 +6,7 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.*;
+import javax.lang.model.util.Elements;
 import java.util.Set;
 
 @SupportedAnnotationTypes("ProcessorClass")
@@ -15,6 +16,10 @@ public class PrintProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         System.out.println("=== process: " + annotations + " ===");
+        System.out.println("sourceVersion: " + processingEnv.getSourceVersion());
+        System.out.println("Locale: " + processingEnv.getLocale());
+        System.out.println("Options: " + processingEnv.getOptions());
+        System.out.println("----------------------------------------");
         roundEnv.getRootElements().forEach(element -> printRoot(element, 1));
         return false;
     }
@@ -23,6 +28,9 @@ public class PrintProcessor extends AbstractProcessor {
         print(prefix, element.getKind() + ": " + element.getSimpleName());
         print(prefix + 1, "Modifiers: " + element.getModifiers());
         print(prefix + 1, "asType: " + element.asType());
+        Elements elementUtils = processingEnv.getElementUtils();
+        print(prefix + 1, "Origin: " + elementUtils.getOrigin(element));
+        print(prefix + 1, "doc: " + elementUtils.getDocComment(element));
         switch (element) {
             case PackageElement packageElement -> printPackage(packageElement, prefix + 1);
             case ModuleElement moduleElement -> printModule(moduleElement, prefix + 1);
@@ -34,6 +42,7 @@ public class PrintProcessor extends AbstractProcessor {
             default -> throw new IllegalStateException("Unexpected value: " + element);
         }
         element.getEnclosedElements().forEach(e -> printRoot(e, prefix + 1));
+        processingEnv.getMessager().printNote("message", element);
     }
 
     private void print(int prefix, String print) {

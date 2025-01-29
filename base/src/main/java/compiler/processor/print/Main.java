@@ -72,7 +72,7 @@ public class Main {
                 }
                 """;
         // 泛型
-        String generics = """
+        String genericsCode = """
                 @ProcessorClass
                 public class ProcessorTest<T> {
                     private T t;
@@ -84,9 +84,31 @@ public class Main {
                     }
                 }
                 """;
+        // 注释
+        String docCode = """
+                /**
+                 * class doc
+                 */
+                @ProcessorClass
+                public class ProcessorTest {
+                    /**
+                     * field doc
+                     */
+                     private int i;
+                     // not print
+                     private int i2;
+                     /**
+                      * f doc
+                      * @param a a doc
+                      * @param b b doc
+                      */
+                     private void f(int a, int b) {
+                     }
+                }
+                """;
 
         // 执行
-        compile(ANNOTATION_CODE + baseCode, new PrintProcessor());
+        compile(ANNOTATION_CODE + docCode, new PrintProcessor());
 
         // 清除编译结果
         Files.delete(Paths.get(CLASS_NAME + ".class"));
@@ -101,6 +123,7 @@ public class Main {
             JavaCompiler.CompilationTask task = javaCompiler.getTask(null, fileManager, listener, null, null, compilationUnits);
             task.setProcessors(List.of(processor));
             task.call();
+            System.out.println("=== Diagnostics ===");
             listener.getDiagnostics().forEach(System.out::println);
         }
     }
