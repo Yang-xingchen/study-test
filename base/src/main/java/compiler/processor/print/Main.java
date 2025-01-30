@@ -108,7 +108,7 @@ public class Main {
                 """;
 
         // 执行
-        compile(ANNOTATION_CODE + docCode, new PrintProcessor());
+        compile(ANNOTATION_CODE + baseCode, new PrintProcessor());
 
         // 清除编译结果
         Files.delete(Paths.get(CLASS_NAME + ".class"));
