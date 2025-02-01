@@ -12,6 +12,8 @@ public class RefreshedListener implements ApplicationListener<ContextRefreshedEv
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("======================");
+        // a class
+        // b class
         event.getApplicationContext().getBeansWithAnnotation(AnnotationComponent.class).forEach((s, o) -> {
             log.info(s, o.getClass().getAnnotation(AnnotationComponent.class).value());
         });

@@ -9,11 +9,13 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 
 public class Queue {
+
     private static final ThreadPoolExecutor executor = new ThreadPoolExecutor(
             4, 4,
             1, TimeUnit.SECONDS,
             new ArrayBlockingQueue<>(10), new ThreadFactory() {
         private final AtomicLong atomicLong = new AtomicLong();
+
         @Override
         public Thread newThread(Runnable r) {
             Thread thread = Executors.defaultThreadFactory().newThread(r);
@@ -52,14 +54,15 @@ public class Queue {
                 8, 8,
                 1, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(50), new ThreadFactory() {
-                    private final AtomicLong atomicLong = new AtomicLong();
-                    @Override
-                    public Thread newThread(Runnable r) {
-                        Thread thread = Executors.defaultThreadFactory().newThread(r);
-                        thread.setName("producer-" + atomicLong.getAndIncrement());
-                        return thread;
-                    }
-                }, new ThreadPoolExecutor.AbortPolicy());
+            private final AtomicLong atomicLong = new AtomicLong();
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread thread = Executors.defaultThreadFactory().newThread(r);
+                thread.setName("producer-" + atomicLong.getAndIncrement());
+                return thread;
+            }
+        }, new ThreadPoolExecutor.AbortPolicy());
 
         @Override
         public void accept(FluxSink<String> stringFluxSink) {

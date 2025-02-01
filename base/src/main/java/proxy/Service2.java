@@ -2,7 +2,8 @@ package proxy;
 
 import java.util.stream.Stream;
 
-public class Service2 implements Service{
+public class Service2 implements Service {
+
     private int id;
 
     public int getId() {

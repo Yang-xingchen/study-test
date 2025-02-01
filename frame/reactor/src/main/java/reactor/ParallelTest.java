@@ -1,7 +1,5 @@
 package reactor;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.ParallelFlux;
@@ -12,8 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 public class ParallelTest {
 
-    private static final Logger log = LogManager.getLogger(ParallelTest.class);
-
     @Test
     public void base() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(1);
@@ -21,7 +17,7 @@ public class ParallelTest {
         ParallelFlux.from(flux)
                 .runOn(Schedulers.newParallel("parallel"))
                 .map(i -> {
-                    log.info(i);
+                    System.out.println(i);
                     try {
                         TimeUnit.MILLISECONDS.sleep(100 - i);
                     } catch (InterruptedException e) {
@@ -29,7 +25,7 @@ public class ParallelTest {
                     }
                     return i;
                 })
-                .subscribe(log::info, log::error, countDownLatch::countDown);
+                .subscribe(System.out::println, System.err::println, countDownLatch::countDown);
         countDownLatch.await();
     }
 

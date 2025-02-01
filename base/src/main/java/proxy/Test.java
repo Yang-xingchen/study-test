@@ -1,15 +1,9 @@
 package proxy;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.lang.reflect.Proxy;
 import java.util.stream.Stream;
 
-
 public class Test {
-
-    private static final Logger LOGGER = LogManager.getLogger(Test.class);
 
 	public static void main(String[] args){
 		ForumService target = new ForumServiceImpl();
@@ -17,19 +11,20 @@ public class Test {
 		ForumService proxy = (ForumService)Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), handle);
 		proxy.removeForum(12);
 		proxy.removeTopic(21);
-		LOGGER.info(proxy.getClass().getName());
+		System.out.println(proxy.getClass().getName());
 
-        LOGGER.info("--------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
 
-        Stream.of(proxy.getClass().getMethods()).forEach(LOGGER::info);
+        Stream.of(proxy.getClass().getMethods()).forEach(System.out::println);
 
-        LOGGER.info("--------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
 
-        LOGGER.info(((PerformanceHandle)Proxy.getInvocationHandler(proxy)).getTarget().getClass().getName());
+        System.out.println(((PerformanceHandle)Proxy.getInvocationHandler(proxy)).getTarget().getClass().getName());
 
-        LOGGER.info("--------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
 
-        LOGGER.info(((ForumServiceImpl)((PerformanceHandle)Proxy.getInvocationHandler(proxy)).getTarget()).test());
-        LOGGER.info(target.toString());
+        System.out.println(((ForumServiceImpl)((PerformanceHandle)Proxy.getInvocationHandler(proxy)).getTarget()).test());
+        System.out.println(target);
     }
+
 }

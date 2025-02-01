@@ -1,13 +1,11 @@
 import org.apache.avro.reflect.ReflectData;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
+import org.apache.parquet.ParquetReadOptions;
 import org.apache.parquet.avro.AvroParquetReader;
 import org.apache.parquet.avro.AvroParquetWriter;
 import org.apache.parquet.column.ColumnDescriptor;
 import org.apache.parquet.column.page.PageReadStore;
 import org.apache.parquet.example.data.Group;
 import org.apache.parquet.example.data.simple.convert.GroupRecordConverter;
-import org.apache.parquet.format.converter.ParquetMetadataConverter;
 import org.apache.parquet.hadoop.ParquetFileReader;
 import org.apache.parquet.hadoop.ParquetFileWriter;
 import org.apache.parquet.hadoop.ParquetReader;
@@ -15,22 +13,25 @@ import org.apache.parquet.hadoop.ParquetWriter;
 import org.apache.parquet.hadoop.metadata.CompressionCodecName;
 import org.apache.parquet.hadoop.metadata.ParquetMetadata;
 import org.apache.parquet.io.ColumnIOFactory;
+import org.apache.parquet.io.LocalInputFile;
+import org.apache.parquet.io.LocalOutputFile;
 import org.apache.parquet.io.RecordReader;
 import org.apache.parquet.schema.MessageType;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class Main {
 
-    private static final Path BASE_PATH = new Path("base.parquet");
+    private static final Path BASE_PATH = Paths.get("base.parquet");
 
     @Test
     public void write() throws IOException {
-        try (ParquetWriter<Entry> writer = AvroParquetWriter.<Entry>builder(BASE_PATH)
+        try (ParquetWriter<Entry> writer = AvroParquetWriter.<Entry>builder(new LocalOutputFile(BASE_PATH))
                 .withSchema(ReflectData.AllowNull.get().getSchema(Entry.class))
                 .withDataModel(ReflectData.get())
                 .withCompressionCodec(CompressionCodecName.SNAPPY)
@@ -44,7 +45,7 @@ public class Main {
 
     @Test
     public void readByEntry() throws IOException {
-        try (ParquetReader reader = AvroParquetReader.<Entry>builder(BASE_PATH)
+        try (ParquetReader reader = AvroParquetReader.<Entry>builder(new LocalInputFile(BASE_PATH))
                 .withDataModel(ReflectData.get())
                 .disableCompatibility()
                 .build()) {
@@ -57,8 +58,9 @@ public class Main {
 
     @Test
     public void readByGeneral() throws IOException {
-        Configuration configuration = new Configuration();
-        ParquetMetadata metadata = ParquetFileReader.readFooter(configuration, BASE_PATH, ParquetMetadataConverter.NO_FILTER);
+        ParquetReadOptions options = ParquetReadOptions.builder().build();
+        LocalInputFile inputFile = new LocalInputFile(BASE_PATH);
+        ParquetMetadata metadata = ParquetFileReader.readFooter(inputFile, options, inputFile.newStream());
         MessageType schema = metadata.getFileMetaData().getSchema();
         System.out.println("----columns----");
         List<ColumnDescriptor> columns = schema.getColumns();
@@ -68,7 +70,7 @@ public class Main {
                 .map(strings -> String.join("->", strings))
                 .forEach(System.out::println);
         System.out.println("----data----");
-        try (ParquetFileReader reader = new ParquetFileReader(configuration, metadata.getFileMetaData(), BASE_PATH, metadata.getBlocks(), columns)) {
+        try (ParquetFileReader reader = new ParquetFileReader(inputFile, options)) {
             PageReadStore pageReadStore;
             int page = 0;
             while ((pageReadStore = reader.readNextRowGroup()) != null) {

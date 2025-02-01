@@ -9,7 +9,10 @@ public class TestService {
 
     public TestModel getByStr(String s) {
         String[] split = s.split("-");
-        return new TestModel().setType(Integer.parseInt(split[0])).setSrc(s).setValue(split[1]);
+        return new TestModel()
+                .setType(Integer.parseInt(split[0]))
+                .setSrc(s)
+                .setValue(split[1]);
     }
 
 }

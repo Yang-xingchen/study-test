@@ -1,6 +1,7 @@
 package proxy;
 
-public class Service1 implements Service{
+public class Service1 implements Service {
+
     private String name;
 
     public Service1() {
