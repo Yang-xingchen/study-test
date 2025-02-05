@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.base.UserMapper">
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="uid">
+        INSERT INTO t_user
+            (`uname`)
+        VALUES
+            (#{user.uname})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM t_user WHERE uid=#{uid}
+    </delete>
+
+    <update id="update">
+        UPDATE t_user SET uname=#{name} WHERE uid=#{uid}
+    </update>
+
+    <select id="find">
+        SELECT uid, uname FROM t_user WHERE uid=#{uid}
+    </select>
+
+</mapper>
