@@ -2,23 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.base.UserMapper">
 
-    <insert id="save" useGeneratedKeys="true" keyProperty="uid">
-        INSERT INTO t_user
-            (`uname`)
-        VALUES
-            (#{user.uname})
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user(`u_name`, `u_gender`) VALUES (#{user.name}, #{user.gender,javaType=com.example.base.Gender,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler})
     </insert>
 
     <delete id="delete">
-        DELETE FROM t_user WHERE uid=#{uid}
+        DELETE FROM t_user WHERE u_id=#{id}
     </delete>
 
     <update id="update">
-        UPDATE t_user SET uname=#{name} WHERE uid=#{uid}
+        UPDATE t_user SET u_name=#{name} WHERE u_id=#{id}
     </update>
 
-    <select id="find">
-        SELECT uid, uname FROM t_user WHERE uid=#{uid}
+    <resultMap id="user" type="com.example.base.User">
+        <result column="gender" property="gender" javaType="com.example.base.Gender" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+    </resultMap>
+
+    <select id="find" resultMap="user">
+        SELECT u_id as id, u_name as name, u_gender as gender FROM t_user WHERE u_id=#{id}
     </select>
 
 </mapper>

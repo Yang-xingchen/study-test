@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.result.UserMapper">
+
+    <insert id="saveUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user(`u_name`, `r_id`) VALUES (#{user.name}, #{user.role.id})
+    </insert>
+
+    <insert id="saveRole" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_role(`r_name`) VALUES (#{role.name})
+    </insert>
+
+    <insert id="savePermissions" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_permissions(`p_name`) VALUES (#{permissions.name})
+    </insert>
+
+    <insert id="saveRolePermissions">
+        INSERT INTO t_role_permissions(`r_id`, `p_id`)
+        VALUES
+        <foreach collection="pids" item="pid" separator=",">
+            (#{role}, #{pid})
+        </foreach>
+    </insert>
+
+    <resultMap id="user" type="com.example.result.User">
+        <id column="u_id" property="id"/>
+        <result column="u_name" property="name"/>
+        <association property="role" column="{rid=r_id}" javaType="com.example.result.Role" select="findRole"/>
+    </resultMap>
+
+    <resultMap id="man" type="com.example.result.User$Man" extends="user">
+    </resultMap>
+    <resultMap id="woman" type="com.example.result.User$Woman" extends="user">
+    </resultMap>
+    
+    <resultMap id="gender" type="com.example.result.User">
+        <discriminator javaType="int" column="u_gender">
+            <case value="0" resultMap="man"/>
+            <case value="1" resultMap="woman"/>
+        </discriminator>
+    </resultMap>
+    
+    <resultMap id="role" type="com.example.result.Role">
+        <id column="r_id" property="id"/>
+        <result column="r_name" property="name"/>
+        <collection property="permissions" ofType="com.example.result.Permissions">
+            <id property="id" column="p_id"/>
+            <result property="name" column="p_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="findUser" resultMap="gender">
+        SELECT * FROM t_user WHERE u_id=#{uid} 
+    </select>
+    
+    <select id="findRole" resultMap="role">
+        SELECT
+            r.r_id,
+            r.r_name,
+            p.p_id,
+            p.p_name
+        FROM t_role r
+            INNER JOIN t_role_permissions rp ON r.r_id=rp.r_id
+            INNER JOIN t_permissions p ON rp.p_id=p.p_id
+        WHERE r.r_id=#{rid}
+    </select>
+
+</mapper>

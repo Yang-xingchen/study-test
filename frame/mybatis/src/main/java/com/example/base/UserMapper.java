@@ -10,10 +10,10 @@ public interface UserMapper {
 
     int save(@Param("user") User user);
 
-    int delete(@Param("uid") Long uid);
+    int delete(@Param("id") Long uid);
 
-    int update(@Param("uid") Long uid, @Param("name") String name);
+    int update(@Param("id") Long uid, @Param("name") String name);
 
-    User find(@Param("uid") Long uid);
+    User find(@Param("id") Long uid);
 
 }

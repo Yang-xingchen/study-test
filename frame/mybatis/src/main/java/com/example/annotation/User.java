@@ -4,30 +4,39 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private Long uid;
-    private String uname;
+    private Long id;
+    private String name;
+    private Gender gender;
 
-    public Long getUid() {
-        return uid;
+    public Long getId() {
+        return id;
     }
 
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUname() {
-        return uname;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "uid=" + uid +
-                ", uname='" + uname + '\'' +
+                "uid=" + id +
+                ", name='" + name + '\'' +
                 '}';
     }
 

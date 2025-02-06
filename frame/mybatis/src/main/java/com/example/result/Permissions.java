@@ -1,12 +1,11 @@
-package com.example.base;
+package com.example.result;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class Permissions implements Serializable {
 
     private Long id;
     private String name;
-    private Gender gender;
 
     public Long getId() {
         return id;
@@ -14,14 +13,6 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public String getName() {
@@ -34,8 +25,8 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "uid=" + id +
+        return "Permissions{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }

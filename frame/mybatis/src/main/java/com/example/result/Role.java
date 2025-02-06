@@ -1,12 +1,13 @@
-package com.example.base;
+package com.example.result;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class User implements Serializable {
+public class Role implements Serializable {
 
     private Long id;
     private String name;
-    private Gender gender;
+    private List<Permissions> permissions;
 
     public Long getId() {
         return id;
@@ -14,14 +15,6 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public String getName() {
@@ -32,11 +25,20 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public List<Permissions> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Permissions> permissions) {
+        this.permissions = permissions;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "uid=" + id +
+        return "Role{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
+                ", permissions=" + permissions +
                 '}';
     }
 

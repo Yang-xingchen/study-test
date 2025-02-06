@@ -23,22 +23,25 @@ public class AnnotationMain implements CommandLineRunner {
 
     private Long save() {
         User user = new User();
-        user.setUname("user");
+        user.setName("user");
+        user.setGender(Gender.MAN);
         Assertions.assertEquals(1, userMapper.save(user));
-        log.info("save: uid: {}", user.getUid());
-        Assertions.assertNotNull(user.getUid());
-        return user.getUid();
+        log.info("save: uid: {}", user.getId());
+        Assertions.assertNotNull(user.getId());
+        return user.getId();
     }
 
     private void find(Long uid) {
         User user = userMapper.find(uid);
         log.info("find: {}", user);
         Assertions.assertNotNull(user);
+        Assertions.assertEquals("user", user.getName());
+        Assertions.assertEquals(Gender.MAN, user.getGender());
     }
 
     private void update(Long uid) {
         Assertions.assertEquals(1, userMapper.update(uid, "user2"));
-        Assertions.assertEquals("user2", userMapper.find(uid).getUname());
+        Assertions.assertEquals("user2", userMapper.find(uid).getName());
     }
 
     private void delete(Long uid) {
