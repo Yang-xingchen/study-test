@@ -2,10 +2,10 @@ package com.example;
 
 import com.example.annotation.AnnotationMain;
 import com.example.base.BaseMain;
-import com.example.base.Gender;
+import com.example.plugin.Plugin;
+import com.example.plugin.PluginMain;
 import com.example.result.ResultMain;
-import org.apache.ibatis.type.EnumOrdinalTypeHandler;
-import org.apache.ibatis.type.TypeHandler;
+import org.apache.ibatis.plugin.Interceptor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,6 +34,16 @@ public class MybatisApplication {
     @Bean
     public CommandLineRunner result() {
         return new ResultMain();
+    }
+
+    @Bean
+    public Interceptor interceptor() {
+        return new Plugin();
+    }
+
+    @Bean
+    public CommandLineRunner plugin() {
+        return new PluginMain();
     }
 
 }

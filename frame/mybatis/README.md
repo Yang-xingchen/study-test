@@ -99,3 +99,28 @@ select进行读操作。
 
 NOTE:
 **使用鉴别器时，该resultMap的其他标签将会忽略**
+
+## 插件
+基本使用: [PluginMain.java](src/main/java/com/example/plugin/PluginMain.java)
+插件: [Plugin.java](src/main/java/com/example/plugin/Plugin.java)
+
+```
+@Intercepts({
+        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
+})
+public class Plugin implements Interceptor{
+
+    @Override
+    public Object intercept(Invocation invocation) throws Throwable {
+        // TODO
+        return invocation.proceed();
+    }
+}
+```
+1. 创建类实现`org.apache.ibatis.plugin.Interceptor`接口，实现`intercept`处理具体逻辑
+2. 添加`org.apache.ibatis.plugin.Intercepts`注解
+3. 在`org.apache.ibatis.plugin.Intercepts`注解添加`org.apache.ibatis.plugin.Signature`注解，表示需要拦截的方法
+   1. type为具体类，可选值为: `org.apache.ibatis.executor.Executor`、`org.apache.ibatis.executor.parameter.ParameterHandler`、`org.apache.ibatis.session.ResultHandler`、`org.apache.ibatis.executor.statement.StatementHandler`
+   2. method为方法名称，args为参数。两者共同确定拦截的方法
+4. Spring注册该类为bean
+
