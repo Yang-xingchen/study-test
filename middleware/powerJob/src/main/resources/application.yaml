@@ -3,3 +3,4 @@ powerjob:
     app-name: power_test
     server-address: 192.168.31.201:7700
     protocol: http
+    akka-port: ${random.int(1025,65535)}
