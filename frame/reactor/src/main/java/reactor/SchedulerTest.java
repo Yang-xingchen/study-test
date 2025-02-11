@@ -40,12 +40,12 @@ public class SchedulerTest {
         producer()
                 .publishOn(Schedulers.newSingle("handle-1"))
                 .map(i -> {
-                    System.out.println("handle-1: " + i);
+                    System.out.println("[" + Thread.currentThread() + "]handle-1: " + i);
                     return i;
                 })
                 .publishOn(Schedulers.newSingle("handle-2"))
                 .map(i -> {
-                    System.out.println("handle-2: " + i);
+                    System.out.println("[" + Thread.currentThread() + "]handle-2: " + i);
                     return i;
                 })
                 .subscribe(message -> System.out.println("subscribe: " + message), System.err::println, countDownLatch::countDown);

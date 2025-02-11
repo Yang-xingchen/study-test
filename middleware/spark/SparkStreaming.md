@@ -1,6 +1,8 @@
 # DStream
 离散化流。将数据按时间区间采集到的数据集。是spark处理流式数据的封装。
 
+[ByKafka.java](src/main/java/streaming/ByKafka.java)
+
 # 接收器
 接收数据，封装为DStream。
 

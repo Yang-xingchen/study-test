@@ -1,10 +1,10 @@
 # spring事务测试
 
 ## 基本测试
-[ModelServerImpl.java](src%2Fmain%2Fjava%2Ftransaction%2FModelServerImpl.java)
+[ModelServerImpl.java](src/main/java/transaction/ModelServerImpl.java)
 
 ## 多线程事务
-[MultiServiceImpl.java](src%2Fmain%2Fjava%2Ftransaction%2FMultiServiceImpl.java)
+[MultiServiceImpl.java](src/main/java/transaction/MultiServiceImpl.java)
 
 1. 获取线程资源，只有获取到任务数相同的线程才开始执行
 2. 开启事务并执行，若失败则记录
