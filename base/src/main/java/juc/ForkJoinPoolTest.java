@@ -7,7 +7,7 @@ import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 import java.util.stream.IntStream;
 
-public class FAJ {
+public class ForkJoinPoolTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
@@ -49,8 +49,6 @@ public class FAJ {
             Sum r = new Sum(arr, mid + 1, end);
             l.fork();
             r.fork();
-            long li = l.join();
-            long ri = r.join();
             return l.join() + r.join();
         }
     }

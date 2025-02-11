@@ -1,6 +1,6 @@
 package compiler.processor.print;
 
-import compiler.CompileToMemory;
+import compiler.StringJavaObject;
 
 import javax.annotation.processing.Processor;
 import javax.tools.*;
@@ -119,7 +119,7 @@ public class Main {
         JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
         DiagnosticCollector<JavaFileObject> listener = new DiagnosticCollector<>();
         try (StandardJavaFileManager fileManager = javaCompiler.getStandardFileManager(listener, Locale.CHINA, StandardCharsets.UTF_8)) {
-            List<CompileToMemory.StringJavaObject> compilationUnits = List.of(new CompileToMemory.StringJavaObject(CLASS_NAME, code));
+            List<StringJavaObject> compilationUnits = List.of(new StringJavaObject(CLASS_NAME, code));
             JavaCompiler.CompilationTask task = javaCompiler.getTask(null, fileManager, listener, null, null, compilationUnits);
             task.setProcessors(List.of(processor));
             task.call();

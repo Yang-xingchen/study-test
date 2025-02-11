@@ -1,10 +1,13 @@
-package other;
+package application;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 范围封装，可进行按点拆分范围或按范围求差集
+ */
 public class RoundSplit {
 
     @Test
@@ -77,24 +80,32 @@ public class RoundSplit {
         cycleRes(new Round(18, 19), 3, 4, 10).forEach(System.out::println);
     }
 
-    private List<Round> cycleRes(Round src, double start, double limit, double round) {
+    /**
+     *
+     * @param src 需要拆分的{@link Round}
+     * @param offset 开始偏移量
+     * @param length 长度
+     * @param round 相邻开始点间隔
+     * @return
+     */
+    private List<Round> cycleRes(Round src, double offset, double length, double round) {
         List<Round> res = new ArrayList<>();
-        while (start < src.start) {
-            List<Round> split = src.split(start, start + limit);
+        while (offset < src.start) {
+            List<Round> split = src.split(offset, offset + length);
             if (split.isEmpty()) {
                 return split;
             }
             src = split.get(0);
-            start += round;
+            offset += round;
         }
         while (true) {
-            List<Round> split = src.split(start, start + limit);
+            List<Round> split = src.split(offset, offset + length);
             res.add(split.get(0));
             if (split.size() == 1) {
                 break;
             }
             src = split.get(1);
-            start += round;
+            offset += round;
         }
         return res;
     }

@@ -1,4 +1,4 @@
-package other;
+package application;
 
 public class AdaptiveScreen {
 

@@ -2,17 +2,29 @@ package compiler;
 
 import javax.tools.*;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+import java.nio.file.StandardOpenOption;
 import java.util.Locale;
 
-public class CompileToMemory {
+public class CompileByFile {
 
     public static void main(String[] args) throws Exception {
+        Path source = getSourcePath();
+        Path target = compile(source);
+        invoke(target);
+
+        // 删除
+        Files.deleteIfExists(source);
+        Files.deleteIfExists(target);
+    }
+
+    /**
+     * 获取源码文件path
+     */
+    private static Path getSourcePath() throws IOException {
         String code = """
                 public class CompilerTest {
                     public static void main() {
@@ -20,35 +32,28 @@ public class CompileToMemory {
                     }
                 }
                 """;
-        compile(code);
-
-        invoke(Paths.get("CompilerTest.class"));
+        Path source = Paths.get("CompilerTest.java");
+        Files.deleteIfExists(source);
+        Files.writeString(source, code, StandardOpenOption.CREATE);
+        return source;
     }
 
-    private static void compile(String code) throws IOException {
+    /**
+     * 编译
+     */
+    private static Path compile(Path source) throws IOException {
+        Path target = Paths.get("CompilerTest.class");
+        Files.deleteIfExists(target);
+
         JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
-        DiagnosticCollector<JavaFileObject> listener = new DiagnosticCollector<>();
-        try (StandardJavaFileManager fileManager = javaCompiler.getStandardFileManager(listener, Locale.CHINA, StandardCharsets.UTF_8)) {
-            List<StringJavaObject> compilationUnits = List.of(new StringJavaObject("CompilerTest", code));
-            JavaCompiler.CompilationTask task = javaCompiler.getTask(null, fileManager, listener, null, null, compilationUnits);
+        try (StandardJavaFileManager fileManager = javaCompiler.getStandardFileManager(null, Locale.CHINA, StandardCharsets.UTF_8)) {
+            Iterable<? extends JavaFileObject> javaFileObjects = fileManager.getJavaFileObjects(source);
+            DiagnosticCollector<JavaFileObject> listener = new DiagnosticCollector<>();
+            JavaCompiler.CompilationTask task = javaCompiler.getTask(null, fileManager, listener, null, null, javaFileObjects);
             task.call();
             listener.getDiagnostics().forEach(System.out::println);
         }
-    }
-
-    public static class StringJavaObject extends SimpleJavaFileObject {
-
-        private final String code;
-
-        public StringJavaObject(String name, String code) {
-            super(URI.create("string:///" + name + Kind.SOURCE.extension), Kind.SOURCE);
-            this.code = code;
-        }
-
-        @Override
-        public CharSequence getCharContent(boolean ignoreEncodingErrors) throws IOException {
-            return code;
-        }
+        return target;
     }
 
     /**

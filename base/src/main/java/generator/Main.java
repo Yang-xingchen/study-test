@@ -9,9 +9,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * 参考: https://mp.weixin.qq.com/s/v-HMKBWxtz1iakxFL09PDw
- */
 public class Main {
 
     /**
