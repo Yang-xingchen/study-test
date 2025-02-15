@@ -3,4 +3,4 @@ spring:
     name: pulsar
   pulsar:
     client:
-      service-url: "pulsar://192.168.31.201:6650"
+      service-url: "pulsar://192.168.31.201:6650,192.168.31.202:6650,192.168.31.203:6650,"
