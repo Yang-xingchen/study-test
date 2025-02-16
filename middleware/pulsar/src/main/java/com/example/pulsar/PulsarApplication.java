@@ -30,7 +30,7 @@ public class PulsarApplication {
 	public CommandLineRunner send(PulsarTemplate<String> pulsarTemplate) {
 		return args -> {
 			for (int i = 0; i < 10; i++) {
-				pulsarTemplate.newMessage("spring: " + i)
+				pulsarTemplate.newMessage(Long.toString(System.currentTimeMillis()))
 						.withTopic("topic")
 						.withMessageCustomizer(messageBuilder -> messageBuilder.key("key"))
 						.send();
@@ -43,7 +43,13 @@ public class PulsarApplication {
 			ackMode = AckMode.MANUAL,
 			batch = true)
 	public void listener(List<Message<String>> message, Acknowledgement acknowledgement) {
+		long time = System.currentTimeMillis();
 		log.info("listener: {}", message.stream().map(Message::getValue).toList());
+		message.stream()
+				.map(Message::getValue)
+				.mapToLong(Long::parseLong)
+				.map(t -> time - t)
+				.forEach(System.out::println);
 		List<MessageId> ids = message.stream().map(Message::getMessageId).toList();
 		acknowledgement.acknowledge(ids);
 	}
