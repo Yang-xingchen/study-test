@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>base-study</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>easyexcel</module>
+        <module>spring-transaction</module>
+        <module>spring-format</module>
+        <module>spring-listener</module>
+        <module>reactor</module>
+        <module>jmh</module>
+        <module>sharding</module>
+        <module>parquet</module>
+        <module>spring-ai</module>
+        <module>mybatis</module>
+        <module>netty</module>
+    </modules>
+
+    <groupId>base-study</groupId>
+    <artifactId>frame</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+</project>

@@ -13,7 +13,7 @@
 2. 启动类添加 `@EnableDiscoveryClient`
 
 ## OpenFeign
-1. [pom.xml](nacos-consumer%2Fpom.xml)添加依赖
+1. [pom.xml](nacos-consumer/pom.xml)添加依赖
     ```xml
     <dependency>
         <groupId>org.springframework.cloud</groupId>
@@ -25,7 +25,7 @@
     </dependency>
    ```
 2. 启动类添加 `@EnableFeignClients`
-3. 创建类 [ServerClientByFeign.java](nacos-consumer%2Fsrc%2Fmain%2Fjava%2Fcom%2Fexample%2Fnacos%2Fconsumer%2FServerClientByFeign.java)
+3. 创建类 [ServerClientByFeign.java](nacos-spring-consumer/src/main/java/com/example/nacos/consumer/ServerClientByFeign.java)
    1. `@FeignClient`内填写服务名称, 为对应服务的 `spring.application.name`
    2. 添加对应方法
 
@@ -59,7 +59,7 @@
 
 ## HttpExchange
 1. 根据基于 `RestTemplate` 或 `RestClient`， 创建对应bean配置。需本身可实现`LoadBalanced`
-2. 创建类 [ServerClientByExchange.java](nacos-consumer%2Fsrc%2Fmain%2Fjava%2Fcom%2Fexample%2Fnacos%2Fconsumer%2FServerClientByExchange.java)
+2. 创建类 [ServerClientByExchange.java](nacos-spring-consumer/src/main/java/com/example/nacos/consumer/ServerClientByExchange.java)
    1. `@HttpExchange`填写服务地址， 如: `http://serverName/`
    2. 添加对应方法
 3. 添加客户端bean配置
