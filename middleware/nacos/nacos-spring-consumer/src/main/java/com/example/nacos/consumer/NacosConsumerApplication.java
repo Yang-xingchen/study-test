@@ -16,6 +16,8 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 @EnableFeignClients
 public class NacosConsumerApplication {
 
+	public static final String PROVIDER_NAME = "nacosSpringProvider";
+
 	public static void main(String[] args) {
 		SpringApplication.run(NacosConsumerApplication.class, args);
 	}

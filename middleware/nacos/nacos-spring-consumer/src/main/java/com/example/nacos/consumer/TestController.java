@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 
-@RefreshScope
 @RestController
 public class TestController {
 
@@ -27,12 +26,12 @@ public class TestController {
 
     @GetMapping("/byRestTemplate")
     public String byRestTemplate() {
-        return "consumer[restTemplate]: " + restTemplate.getForObject("http://nacosServer/", String.class);
+        return "consumer[restTemplate]: " + restTemplate.getForObject("http://" + NacosConsumerApplication.PROVIDER_NAME + "/", String.class);
     }
 
     @GetMapping("/byRestClient")
     public String byRestClient() {
-        return "consumer[restClient]: " + restClient.get().uri("http://nacosServer/").retrieve().body(String.class);
+        return "consumer[restClient]: " + restClient.get().uri("http://" + NacosConsumerApplication.PROVIDER_NAME + "/").retrieve().body(String.class);
     }
 
     @GetMapping("/byExchange")

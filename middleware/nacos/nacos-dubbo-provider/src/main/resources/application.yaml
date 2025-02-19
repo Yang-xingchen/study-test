@@ -2,9 +2,9 @@ server:
   port: 8081
 spring:
   application:
-    name: nacosSpringProvider
+    name: nacosDubboProvider
   config:
-    import: optional:nacos:nacosSpringProvider
+    import: optional:nacos:nacosDubboProvider
   cloud:
     nacos:
       config:
@@ -16,3 +16,12 @@ spring:
         server-addr: 192.168.31.201:8848,192.168.31.202:8848,192.168.31.203:8848
         username: nacos
         password: 123456
+dubbo:
+  application:
+    name: ${spring.application.name}
+    qos-enable: false
+  protocol:
+    name: tri
+    port: 50052
+  registry:
+    address: nacos://192.168.31.201:8848?username=nacos&password=123456

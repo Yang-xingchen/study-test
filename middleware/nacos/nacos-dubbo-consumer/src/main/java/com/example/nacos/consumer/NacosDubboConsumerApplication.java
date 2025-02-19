@@ -1,15 +1,17 @@
-package com.example.nacos.server;
+package com.example.nacos.consumer;
 
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDubbo
 @EnableDiscoveryClient
 @SpringBootApplication
-public class NacosServerApplication {
+public class NacosDubboConsumerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NacosServerApplication.class, args);
+		SpringApplication.run(NacosDubboConsumerApplication.class, args);
 	}
 
 }
