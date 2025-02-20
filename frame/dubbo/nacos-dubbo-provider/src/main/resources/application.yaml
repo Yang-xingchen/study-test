@@ -1,0 +1,31 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: nacosDubboProvider
+  config:
+    import: optional:nacos:nacosDubboProvider
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.31.201:8848,192.168.31.202:8848,192.168.31.203:8848
+        file-extension: yaml
+        username: nacos
+        password: 123456
+      discovery:
+        server-addr: 192.168.31.201:8848,192.168.31.202:8848,192.168.31.203:8848
+        username: nacos
+        password: 123456
+dubbo:
+  application:
+    name: ${spring.application.name}
+    qos-enable: false
+  protocols:
+    dubbo:
+      name: dubbo
+      port: 50051
+    rest:
+      name: tri
+      port: 50052
+  registry:
+    address: nacos://192.168.31.201:8848?username=nacos&password=123456

@@ -21,6 +21,7 @@
         <module>spring-ai</module>
         <module>mybatis</module>
         <module>netty</module>
+        <module>dubbo</module>
     </modules>
 
     <groupId>base-study</groupId>
