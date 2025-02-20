@@ -42,25 +42,29 @@
    ```
 
 ## RestClient
-1. 添加建造者bean配置
+1. 添加bean配置
     ```java
-    @Bean
-    @LoadBalanced
-    public RestClient.Builder restClientBuild() {
-        return RestClient
-                .builder();
-    }
-    ```
-2. 添加 `RestClient` bean配置
-    ```java
-    @Bean
-    public RestClient restClient(RestClient.Builder builder) {
-        return builder.build();
-    }
+   @Bean
+   public RestClient restClient(LoadBalancerInterceptor interceptor) {
+      return RestClient.builder()
+				.requestInterceptor(interceptor)
+				.build();
+   }
+   ```
+
+## WebClient
+1. 添加bean配置
+   ```java
+   @Bean
+   public WebClient webClient(ReactorLoadBalancerExchangeFilterFunction filterFunction) {
+      return WebClient.builder()
+				.filter(filterFunction)
+				.build();
+   }
    ```
 
 ## HttpExchange
-1. 根据基于 `RestTemplate` 或 `RestClient`， 创建对应bean配置。需本身可实现`LoadBalanced`
+1. 根据基于 `RestTemplate`、`RestClient` 或 `WebClient`， 创建对应bean配置。需本身可实现`LoadBalanced`
 2. 创建类 [ServerClientByExchange.java](nacos-spring-consumer/src/main/java/com/example/nacos/consumer/ServerClientByExchange.java)
    1. `@HttpExchange`填写服务地址， 如: `http://serverName/`
    2. 添加对应方法
@@ -79,6 +83,15 @@
     @Bean
     public ServerClientByExchange serverClientByExchange(RestClient restClient) {
         RestClientAdapter adapter = RestClientAdapter.create(restClient);
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+        return factory.createClient(ServerClientByExchange.class);
+    }
+   ```
+   > 基于 `WebClient`
+   ```java
+    @Bean
+    public ServerClientByExchange serverClientByExchange(WebClient webClient) {
+        WebClientAdapter adapter = WebClientAdapter.create(webClient);
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
         return factory.createClient(ServerClientByExchange.class);
     }

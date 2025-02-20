@@ -1,10 +1,10 @@
 # dubbo
 [官网](https://cn.dubbo.apache.org/zh-cn/)
 
+# 使用(nacos)
 - [api](../../middleware/nacos/nacos-dubbo-api/src/main/java/com/example/nacos/server/Server.java)
 - [provider](../../middleware/nacos/nacos-dubbo-provider/src/main/java/com/example/nacos/provider/ServerImpl.java)
 - [consumer](../../middleware/nacos/nacos-dubbo-consumer/src/main/java/com/example/nacos/consumer/TestController.java)
-
 
 1. 添加依赖dubbo管理。
    ```xml
@@ -23,11 +23,6 @@
 2. 添加依赖
    ```xml
    <dependencies>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>nacos-dubbo-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
