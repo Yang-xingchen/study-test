@@ -22,6 +22,7 @@
         <module>mybatis</module>
         <module>netty</module>
         <module>dubbo</module>
+        <module>sentinel</module>
     </modules>
 
     <groupId>base-study</groupId>
