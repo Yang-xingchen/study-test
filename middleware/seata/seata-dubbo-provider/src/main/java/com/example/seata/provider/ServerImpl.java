@@ -1,0 +1,42 @@
+package com.example.seata.provider;
+
+import com.example.seata.server.Server;
+import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.seata.core.context.RootContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@DubboService(group = "dubbo")
+public class ServerImpl implements Server {
+
+    private static final Logger log = LoggerFactory.getLogger(ServerImpl.class);
+
+    @Autowired
+    private TestMapper testMapper;
+
+    @Override
+    public Long create(int init) {
+        log.info("XID: {}", RootContext.getXID());
+        Entry entry = new Entry();
+        entry.setVal(init);
+        testMapper.save(entry);
+        return entry.getId();
+    }
+
+    @Override
+    public void add(Long id, int i, boolean err) {
+        log.info("ID: {}, XID: {}", id, RootContext.getXID());
+        if (err) {
+            throw new RuntimeException("err");
+        }
+        testMapper.add(id, i);
+    }
+
+    @Override
+    public Integer get(Long id) {
+        log.info("ID: {}, XID: {}", id, RootContext.getXID());
+        return testMapper.get(id);
+    }
+
+}

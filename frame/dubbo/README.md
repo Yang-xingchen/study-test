@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-            <version>${nacos.version}</version>
+            <version>${spring-cloud-alibaba.version}</version>
         </dependency>
         <!-- dubbo -->
         <dependency>

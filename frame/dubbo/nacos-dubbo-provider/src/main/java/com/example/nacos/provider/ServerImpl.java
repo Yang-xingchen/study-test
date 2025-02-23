@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @DubboService(group = "dubbo", protocol = {"dubbo", "rest"})
 @RefreshScope
-@RestController
 public class ServerImpl implements Server {
 
     private String value;

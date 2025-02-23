@@ -20,6 +20,7 @@
         <module>powerJob</module>
         <module>prometheus</module>
         <module>pulsar</module>
+        <module>seata</module>
     </modules>
 
     <groupId>base-study</groupId>

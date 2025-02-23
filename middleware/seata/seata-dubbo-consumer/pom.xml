@@ -4,28 +4,23 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>base-study</groupId>
-		<artifactId>dubbo</artifactId>
+		<artifactId>seata</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>nacos-dubbo-provider</artifactId>
+	<artifactId>seata-dubbo-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>nacos-dubbo-provider</name>
+	<name>seata-dubbo-consumer</name>
 	<description>Demo project for Spring Boot</description>
 	<dependencies>
 		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-			<version>${spring-cloud-alibaba.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.example</groupId>
-			<artifactId>nacos-dubbo-api</artifactId>
+			<artifactId>seata-dubbo-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
 			<version>${spring-cloud-alibaba.version}</version>
 		</dependency>
 		<!-- dubbo -->
@@ -36,6 +31,11 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-nacos-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- seata -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
 		</dependency>
 	</dependencies>
 
