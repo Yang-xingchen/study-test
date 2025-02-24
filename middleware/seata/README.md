@@ -1,6 +1,7 @@
 # seata
 [官网](https://seata.apache.org/zh-cn/)
 
+# 安装
 ## JDK
 [安装](../../base/JDK安装.md)
 
@@ -38,3 +39,55 @@ CREATE TABLE `undo_log` (
 ## Saga
 
 ## XA
+
+# 微服务适配
+## Dubbo
+- [api](./seata-dubbo/seata-dubbo-api/src/main/java/com/example/seata/server/Server.java)
+- [provider](./seata-dubbo/seata-dubbo-provider/src/main/java/com/example/seata/provider/SeataDubboProviderApplication.java)
+- [consumer](./seata-dubbo/seata-dubbo-consumer/src/main/java/com/example/seata/consumer/SeataDubboConsumerApplication.java)
+
+## Spring
+- [provider](./seata-spring/seata-spring-provider/src/main/java/com/example/seata/provider/SeataSpringProviderApplication.java)
+- [consumer](./seata-spring/seata-spring-consumer/src/main/java/com/example/seata/consumer/SeataSpringConsumerApplication.java)
+  - [RestTemplate](./seata-spring/seata-spring-consumer/src/main/java/com/example/seata/consumer/service/RestTemplateServerImpl.java)
+    ```java
+    @Bean
+    public RestTemplate restTemplate(LoadBalancerInterceptor loadBalancer, SeataRestTemplateInterceptor seata) {
+        return new RestTemplateBuilder()
+				.interceptors(loadBalancer, seata)
+				.build();
+    }
+    ```
+  - [RestClient](./seata-spring/seata-spring-consumer/src/main/java/com/example/seata/consumer/service/RestClientServerImpl.java)
+    ```java
+    @Bean
+    public RestClient restClient(LoadBalancerInterceptor loadBalancer, SeataRestTemplateInterceptor seata) {
+        return RestClient.builder()
+				.requestInterceptors(interceptors -> {
+					interceptors.add(loadBalancer);
+					interceptors.add(seata);
+				})
+				.build();
+    }
+    ```
+  - [WebClient](./seata-spring/seata-spring-consumer/src/main/java/com/example/seata/consumer/service/WebClientServerImpl.java)
+    ```java
+    @Bean
+    public WebClient webClient(ReactorLoadBalancerExchangeFilterFunction filter) {
+        return WebClient.builder()
+				.filter(filter)
+				.filter((request, next) -> {
+					String xid = RootContext.getXID();
+					if (StringUtils.hasLength(xid)) {
+						request = ClientRequest.from(request)
+								.headers(httpHeaders -> httpHeaders.add(RootContext.KEY_XID, xid))
+								.build();
+					}
+					return next.exchange(request);
+				})
+				.build();
+    }
+    ```
+  - [Feign](./seata-spring/seata-spring-consumer/src/main/java/com/example/seata/consumer/service/FeignServerImpl.java)
+  - [HttpExchange](./seata-spring/seata-spring-consumer/src/main/java/com/example/seata/consumer/service/ExchangeServerImpl.java)
+

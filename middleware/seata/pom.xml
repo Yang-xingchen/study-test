@@ -14,9 +14,8 @@
     </properties>
 
     <modules>
-        <module>seata-dubbo-api</module>
-        <module>seata-dubbo-provider</module>
-        <module>seata-dubbo-consumer</module>
+        <module>seata-dubbo</module>
+        <module>seata-spring</module>
     </modules>
 
     <groupId>base-study</groupId>
