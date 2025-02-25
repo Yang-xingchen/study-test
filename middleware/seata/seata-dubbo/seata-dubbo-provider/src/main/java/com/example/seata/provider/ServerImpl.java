@@ -26,7 +26,7 @@ public class ServerImpl implements Server {
 
     @Override
     public void add(Long id, int i, boolean err) {
-        log.info("ID: {}, XID: {}", id, RootContext.getXID());
+        log.info("add: ID: {}, XID: {}", id, RootContext.getXID());
         if (err) {
             throw new RuntimeException("err");
         }
@@ -35,8 +35,14 @@ public class ServerImpl implements Server {
 
     @Override
     public Integer get(Long id) {
-        log.info("ID: {}, XID: {}", id, RootContext.getXID());
+        log.info("get: ID: {}, XID: {}", id, RootContext.getXID());
         return testMapper.get(id);
+    }
+
+    @Override
+    public void delete(Long id) {
+        log.info("delete: ID: {}, XID: {}", id, RootContext.getXID());
+        testMapper.delete(id);
     }
 
 }

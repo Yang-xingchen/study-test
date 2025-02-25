@@ -1,9 +1,13 @@
 package com.example.seata.consumer;
 
+import com.example.seata.consumer.at.AtTestService;
+import com.example.seata.consumer.tcc.TccTestService;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
@@ -13,27 +17,50 @@ import org.springframework.context.annotation.Bean;
 public class SeataDubboConsumerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SeataDubboConsumerApplication.class, args);
+		new SpringApplicationBuilder(SeataDubboConsumerApplication.class)
+				.web(WebApplicationType.NONE)
+				.run(args);
 	}
 
 	@Bean
-	public CommandLineRunner commit(TestService testService) {
+	public CommandLineRunner atCommit(AtTestService atTestService) {
 		return args -> {
-			Long id = testService.commit();
-			testService.check("commit", id, 2);
+			Long id = atTestService.commit();
+			atTestService.check("at commit", id, 2);
 		};
 	}
 
 	@Bean
-	public CommandLineRunner rollback(TestService testService) {
+	public CommandLineRunner atRollback(AtTestService atTestService) {
 		return args -> {
 			Long id;
 			try {
-				id = testService.rollback();
+				id = atTestService.rollback();
 			} catch (TestException e) {
 				id = e.getId();
 			}
-			testService.check("rollback", id, null);
+			atTestService.check("at rollback", id, null);
+		};
+	}
+
+	@Bean
+	public CommandLineRunner tccCommit(TccTestService tccTestService) {
+		return args -> {
+			Long id = tccTestService.commit();
+			tccTestService.check("tcc commit", id, 2);
+		};
+	}
+
+	@Bean
+	public CommandLineRunner tccRollback(TccTestService tccTestService) {
+		return args -> {
+			Long id;
+			try {
+				id = tccTestService.rollback();
+			} catch (TestException e) {
+				id = e.getId();
+			}
+			tccTestService.check("tcc rollback", id, null);
 		};
 	}
 

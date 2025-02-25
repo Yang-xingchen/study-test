@@ -15,6 +15,7 @@
 
 # 事务模式
 ## AT
+[at](seata-dubbo/seata-dubbo-consumer/src/main/java/com/example/seata/consumer/at)
 
 **需要在对应数据库下创建`undo_log`表**
 ```
@@ -35,10 +36,28 @@ CREATE TABLE `undo_log` (
 ```
 
 ## TCC
+> try-commit-cancel(TCC)
+
+[tcc](seata-dubbo/seata-dubbo-consumer/src/main/java/com/example/seata/consumer/tcc)
+
+**需要`@LocalTCC`和`@TwoPhaseBusinessAction`注解标记**
+1. `@LocalTCC`标注调用的操作类，该类实现`prepare`、`commit`、`rollback`方法。
+2. `@TwoPhaseBusinessAction`注解标记`prepare`方法，并用`@BusinessActionContextParameter`标记业务参数。
+3. `prepare`方法表示`try`阶段，该阶段执行业务检查并锁定资源。
+4. `commit`方法表示`commit`阶段，该阶段提交事务(尽量不失败)。
+5. `rollback`方法表示`cancel`阶段，该阶段回滚事务(尽量不失败)。
 
 ## Saga
 
 ## XA
+
+## 比较
+| | AT | TCC | Saga | XA |
+|---|---|---|---|---|
+| 一致性 | 弱一致 | 弱一致 | 最终一致 | 强一致 |
+| 隔离性 | 全局锁 | 资源预留 | 无 | 完全隔离 |
+| 代码侵入性 | 无 | 需手动实现三个方法 | 要编写状态机及补偿代码 | 无 |
+| 性能 | 高 | 很高 | 很高 | 低 |
 
 # 微服务适配
 ## Dubbo

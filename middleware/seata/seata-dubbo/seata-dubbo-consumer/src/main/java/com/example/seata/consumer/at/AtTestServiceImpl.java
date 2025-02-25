@@ -1,21 +1,22 @@
-package com.example.seata.consumer;
+package com.example.seata.consumer.at;
 
-import com.example.seata.consumer.service.Server;
+import com.example.seata.consumer.TestException;
+import com.example.seata.server.Server;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.seata.core.context.RootContext;
 import org.apache.seata.spring.annotation.GlobalTransactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
 @Service
-public class TestServiceImpl implements TestService {
+public class AtTestServiceImpl implements AtTestService {
 
-    private static final Logger log = LoggerFactory.getLogger(TestServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(AtTestServiceImpl.class);
 
-    @Autowired
+    @DubboReference(group = "dubbo")
     private Server server;
 
     @Override

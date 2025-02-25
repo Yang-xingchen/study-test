@@ -8,4 +8,6 @@ public interface Server {
 
     Integer get(Long id);
 
+    void delete(Long id);
+
 }

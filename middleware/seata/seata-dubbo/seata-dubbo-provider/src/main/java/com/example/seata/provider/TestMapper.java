@@ -14,4 +14,6 @@ public interface TestMapper {
 
     Integer get(@Param("id") Long id);
 
+    void delete(@Param("id") Long id);
+
 }

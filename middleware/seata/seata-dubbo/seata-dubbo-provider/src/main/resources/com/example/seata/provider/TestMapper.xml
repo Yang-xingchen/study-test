@@ -14,4 +14,8 @@
         SELECT val FROM t_seata WHERE id=#{id}
     </select>
 
+    <delete id="delete">
+        DELETE FROM t_seata WHERE id=#{id}
+    </delete>
+
 </mapper>

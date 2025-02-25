@@ -1,6 +1,6 @@
-package com.example.seata.consumer;
+package com.example.seata.consumer.at;
 
-public interface TestService {
+public interface AtTestService {
 
     Long commit();
 
